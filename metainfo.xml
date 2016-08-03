@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>ELK</name>
+      <displayName>ELK</displayName>
+      <comment>Log Analysis with the ELK stack (Elasticsearch, Logstash, Kibana)</comment>
+      <version>0.1.0</version>
+      <components>
+        <component>
+          <name>LOGSTASH_AGENT</name>
+          <displayName>Logstash Agent</displayName>
+          <category>SLAVE</category>
+          <cardinality>0+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <commandScript>
+            <script>scripts/logstash_agent.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+        <component>
+          <name>ELASTIC_DATANODE</name>
+          <displayName>Elastic Datanode</displayName>
+          <category>MASTER</category>
+          <cardinality>1+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <commandScript>
+            <script>scripts/elastic_master.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+        <component>
+          <name>ELASTIC_CLIENTNODE</name>
+          <displayName>Elastic ClientNode</displayName>
+          <category>SLAVE</category>
+          <cardinality>0+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <commandScript>
+            <script>scripts/elastic_slave.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+        <component>
+          <name>KIBANA_SERVER</name>
+          <displayName>Kibana Server</displayName>
+          <category>MASTER</category>
+          <cardinality>0+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <commandScript>
+            <script>scripts/kibana_server.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+      </components>
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>any</osFamily>
+          <packages>
+            <package>
+              <name>logstash</name>
+            </package>
+            <package>
+              <name>elasticsearch</name>
+            </package>
+            <package>
+              <name>kibana</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+      <configuration-dependencies>
+        <config-type>elasticsearch-site</config-type>
+        <config-type>logstash-data-source</config-type>
+        <config-type>kibana-site</config-type>
+        <config-type>elk-env</config-type>
+      </configuration-dependencies>
+    </service>
+  </services>
+</metainfo>

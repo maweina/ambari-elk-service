@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration supports_final="true">
+  <property>
+    <name>server.port</name>
+    <value>5601</value>
+    <description>Kibana Server Port</description>
+    <value-attributes>
+      <type>int</type>
+    </value-attributes>
+  </property>
+  <property>
+    <name>kibana.index</name>
+    <value>.kibana</value>
+    <description>Kibana uses an index in Elasticsearch to 
+    store saved searches, visualizations and dashboards. 
+    It will create a new index if it doesn't already exist.
+    </description>
+  </property>
+  <property>
+    <name>logging.dest</name>
+    <value>/var/log/kibana</value>
+    <description>If you would like to send 
+    the log output to a file you can set the path below.
+    </description>
+  </property>
+  <!--property>
+    <name>elasticsearch.username</name>
+    <value></value>
+    <description>If your Elasticsearch is protected with 
+    basic auth, this is the user name used by Kibana server 
+    to authenticate with Elasticsearch.
+    </description>
+  </property>
+  <property>
+    <name>elasticsearch.password</name>
+    <value></value>
+    <description>If your Elasticsearch is protected with 
+    basic auth, this is the password used by Kibana server 
+    to authenticate with Elasticsearch.
+    </description>
+  </property>
+  <property>
+    <name>server.ssl.cert</name>
+    <value></value>
+    <description>SSL for outgoing requests from 
+    the Kibana Server to the browser (PEM formatted);
+    /path/to/your/server.crt
+    </description>
+  </property>
+  <property>
+    <name>server.ssl.key</name>
+    <value></value>
+    <description>SSL for outgoing requests from 
+    the Kibana Server to the browser (PEM formatted);
+    /path/to/your/server.key
+    </description>
+  </property>
+  <property>
+    <name>elasticsearch.ssl.ca</name>
+    <value></value>
+    <description>If you need to provide a 
+    CA certificate for your Elasticsearch instance, 
+    put the path of the pem file here; 
+    /path/to/your/CA.pem
+    </description>
+  </property-->
+</configuration>

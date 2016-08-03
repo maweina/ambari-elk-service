@@ -1,0 +1,24 @@
+server.port: {{kibana_port}}
+
+elasticsearch.url: "http://localhost:{{elastic_port}}"
+
+kibana.index: {{kinana_index}}
+
+{#
+{% if is_elastic_protected %}
+elasticsearch.username: {{elasticsearch_username}}
+elasticsearch.password: {{elasticsearch_password}}
+{% endif %}
+
+{% if is_ssl_enabled %}
+server.ssl.cert: {{server_ssl_cert}}
+server.ssl.key: {{server_ssl_key}}
+{% endif %}
+
+{% if is_ca_certificate %}
+elasticsearch.ssl.ca: {{elasticsearch_ssl_ca}}
+{% endif %}
+
+pid.file: {{kibana_pid_file}}
+logging.dest: {{kibana_logging_dest}}
+#}

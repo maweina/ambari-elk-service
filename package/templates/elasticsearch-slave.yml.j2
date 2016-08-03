@@ -1,0 +1,12 @@
+cluster.name: {{elastic_cluster_name}} 
+node.name: {{hostname}}
+http.port: {{elastic_port}}
+
+node.master: false
+node.data: false
+
+network.host: [{{hostname}}, _local_]
+discovery.zen.ping.unicast.hosts: [{{elastic_data_hosts|join(',')}}]
+
+path.data: {{elastic_data_dir}}
+path.logs: {{elastic_log_dir}}
