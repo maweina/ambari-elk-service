@@ -37,9 +37,32 @@ def logstash(role=None):
               recursive=True
             )
 
-    File(format("{logstash_conf_dir}/logstash-fs.conf"),
-       content=Template("logstash-fs.conf.j2"),
-       owner=params.logstash_user,
-       group=params.logstash_user_group,
-       mode=0644
-    )
+    host_list = params.logstash_source_hosts.split(',')
+    if params.hostname in host_list:
+        File(format("{logstash_conf_dir}/1-logstash-input.conf"),
+           content=Template("logstash-input.conf.j2"),
+           owner=params.logstash_user,
+           group=params.logstash_user_group,
+           mode=0644
+        )
+        
+        File(format("{logstash_conf_dir}/2-logstash-filter.conf"),
+           content=Template("logstash-filter.conf.j2"),
+           owner=params.logstash_user,
+           group=params.logstash_user_group,
+           mode=0644
+        )
+        
+        File(format("{logstash_conf_dir}/3-logstash-output.conf"),
+           content=Template("logstash-output.conf.j2"),
+           owner=params.logstash_user,
+           group=params.logstash_user_group,
+           mode=0644
+        )
+    else:
+        File(format("{logstash_conf_dir}/logstash-dummy.conf"),
+           content=Template("logstash-dummy.conf.j2"),
+           owner=params.logstash_user,
+           group=params.logstash_user_group,
+           mode=0644
+        )

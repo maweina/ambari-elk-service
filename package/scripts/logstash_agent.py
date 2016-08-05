@@ -20,6 +20,7 @@ limitations under the License.
 
 from resource_management import *
 from logstash import logstash
+import os
 
 class LogstashAgent(Script):
   def install(self, env):
@@ -39,7 +40,10 @@ class LogstashAgent(Script):
     import params
     env.set_params(params)
     self.configure(env)
-    start_cmd = format("{logstash_bin}/logstash agent --config {logstash_conf_dir} --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
+    if len(os.listdir(params.logstash_conf_dir)) > 0:
+        start_cmd = format("{logstash_bin}/logstash agent --config {logstash_conf_dir} --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
+    else:
+        start_cmd = format("{logstash_bin}/logstash agent --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
     Execute(start_cmd) 
     
   def stop(self, env, upgrade_type=None):

@@ -1,0 +1,7 @@
+input {
+  file {
+    path => "{{logstash_source_file}}"
+    sincedb_path => "{{logstash_sincedb_path}}"
+    start_position => beginning
+  }
+}

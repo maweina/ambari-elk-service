@@ -70,5 +70,8 @@ kinana_index = config['configurations']['kibana-site']['kibana.index']
 logstash_elastic_index = config['configurations']['logstash-data-source']['elastic.index']
 logstash_source_file = config['configurations']['logstash-data-source']['source.file']
 logstash_source_type = config['configurations']['logstash-data-source']['source.type']
+logstash_source_hosts = config['configurations']['logstash-data-source']['source.host']
+logstash_source_filter = config['configurations']['logstash-data-source']['source.filter']
 
 elastic_data_hosts = default("/clusterHostInfo/elastic_datanode_hosts", [])
+  

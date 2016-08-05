@@ -28,16 +28,31 @@
     </description>
   </property>
   <property>
-    <name>elastic.index</name>
-    <value>mapred.job</value>
-    <description>Logstash uses this index in Elasticsearch 
-    to store collecter data.
+    <name>source.file</name>
+    <value>/var/log/hadoop-yarn/yarn/hadoop-mapreduce.jobsummary.log</value>
+    <description>Logstash collects data from this file path.
     </description>
   </property>
   <property>
-    <name>source.file</name>
-    <value>/var/log/ambari-agent/ambari-agent.log</value>
-    <description>Logstash collects data from this file path.
+    <name>source.host</name>
+    <value>node2</value>
+    <description>Logstash collects data from these hosts; seperate by ",".
+    </description>
+  </property>
+  <property>
+    <name>source.filter</name>
+    <value>filter {}</value>
+    <description>Logstash uses this filter for data pre-processing.
+    </description>
+    <value-attributes>
+      <type>multiLine</type>
+    </value-attributes>
+  </property>
+  <property>
+    <name>elastic.index</name>
+    <value>mapred</value>
+    <description>Logstash uses this index in Elasticsearch 
+    to store collecter data.
     </description>
   </property>
 </configuration>
