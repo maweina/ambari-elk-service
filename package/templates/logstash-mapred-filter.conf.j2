@@ -1,0 +1,20 @@
+filter {
+  grok {
+    match => { 
+      "message" => "\A%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+(?<logger>(?:[a-zA-Z0-9-]+\.)*[A-Za-z0-9$]+)\s*(:\s+)?appId=(?:%{WORD:appId}),name=(?<name>(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),user=(?<user>(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),queue=(?<queue>(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),state=(?:%{WORD:state}),trackingUrl=(?<trackingUrl>(?:.*)),appMasterHost=(?<appMasterHost>(?:.*)),startTime=(?:%{WORD:startTime}),finishTime=(?:%{WORD:finishTime}),finalStatus=(?:%{WORD:finalStatus}),memorySeconds=(?:%{WORD:memorySeconds}),vcoreSeconds=(?:%{WORD:vcoreSeconds}),preemptedAMContainers=(?:%{WORD:preemptedAMContainers}),preemptedNonAMContainers=(?:%{WORD:preemptedNonAMContainers}),preemptedResources=<memory:(?:%{WORD:preemptedResources_memory})(\\,.*)vCores:(?:%{WORD:preemptedResources_vCores})>,applicationType=(?:%{WORD:applicationType})" 
+    }
+  }
+  mutate {
+    convert => ["startTime", "integer"]
+    convert => ["finishTime", "integer"]
+    convert => ["memorySeconds", "integer"]
+    convert => ["vcoreSeconds", "integer"]
+    convert => ["preemptedAMContainers", "integer"]
+    convert => ["preemptedNonAMContainers", "integer"]
+    convert => ["preemptedResources_memory", "integer"]
+    convert => ["preemptedResources_vCores", "integer"]
+  }
+  ruby {
+    code => "event['executionTime'] = event['finishTime']/1000 - event['startTime']/1000"
+  }
+}

@@ -46,8 +46,8 @@ def logstash(role=None):
            mode=0644
         )
         
-        File(format("{logstash_conf_dir}/2-logstash-filter.conf"),
-           content=Template("logstash-filter.conf.j2"),
+        File(format("{logstash_conf_dir}/2-logstash-mapred-filter.conf"),
+           content=Template("logstash-mapred-filter.conf.j2"),
            owner=params.logstash_user,
            group=params.logstash_user_group,
            mode=0644
@@ -55,13 +55,6 @@ def logstash(role=None):
         
         File(format("{logstash_conf_dir}/3-logstash-output.conf"),
            content=Template("logstash-output.conf.j2"),
-           owner=params.logstash_user,
-           group=params.logstash_user_group,
-           mode=0644
-        )
-    else:
-        File(format("{logstash_conf_dir}/logstash-dummy.conf"),
-           content=Template("logstash-dummy.conf.j2"),
            owner=params.logstash_user,
            group=params.logstash_user_group,
            mode=0644
