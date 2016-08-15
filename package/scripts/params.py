@@ -67,11 +67,16 @@ elastic_port = config['configurations']['elasticsearch-site']['http.port']
 kibana_port = config['configurations']['kibana-site']['server.port']
 kinana_index = config['configurations']['kibana-site']['kibana.index']
 
-logstash_elastic_index = config['configurations']['logstash-data-source']['elastic.index']
-logstash_source_file = config['configurations']['logstash-data-source']['source.file']
-logstash_source_type = config['configurations']['logstash-data-source']['source.type']
-logstash_source_hosts = config['configurations']['logstash-data-source']['source.host']
-logstash_source_filter = config['configurations']['logstash-data-source']['source.filter']
+# logstash conf for mapred
+mapred_collection_enabled = config['configurations']['logstash-data-source']['mapred.collection.enabled']
+mapred_source_file = config['configurations']['logstash-data-source']['mapred.source.file']
+mapred_source_hosts = config['configurations']['logstash-data-source']['mapred.source.hosts']
+mapred_elastic_index = config['configurations']['logstash-data-source']['mapred.elastic.index']
+
+# logstash conf for hdfs
+hdfs_collection_enabled = config['configurations']['logstash-data-source']['hdfs.collection.enabled']
+hdfs_source_file = config['configurations']['logstash-data-source']['hdfs.source.file']
+hdfs_source_hosts = config['configurations']['logstash-data-source']['hdfs.source.hosts']
+hdfs_elastic_index = config['configurations']['logstash-data-source']['hdfs.elastic.index']
 
 elastic_data_hosts = default("/clusterHostInfo/elastic_datanode_hosts", [])
-  

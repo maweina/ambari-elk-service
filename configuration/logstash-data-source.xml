@@ -22,35 +22,51 @@
 
 <configuration supports_final="true">
   <property>
-    <name>source.type</name>
-    <value>fs</value>
-    <description>Souce type can be either "fs" or "hdfs".
+    <name>mapred.collection.enabled</name>
+    <value>true</value>
+    <description>Enable logstash collecting data from this application; true or false
     </description>
   </property>
   <property>
-    <name>source.file</name>
+    <name>mapred.source.file</name>
     <value>/var/log/hadoop-yarn/yarn/hadoop-mapreduce.jobsummary.log</value>
     <description>Logstash collects data from this file path.
     </description>
   </property>
   <property>
-    <name>source.host</name>
+    <name>mapred.source.hosts</name>
     <value>node2</value>
     <description>Logstash collects data from these hosts; seperate by ",".
     </description>
   </property>
   <property>
-    <name>source.filter</name>
-    <value>filter {}</value>
-    <description>Logstash uses this filter for data pre-processing.
+    <name>mapred.elastic.index</name>
+    <value>mapred</value>
+    <description>Logstash uses this index in Elasticsearch 
+    to store collecter data.
     </description>
-    <value-attributes>
-      <type>multiLine</type>
-    </value-attributes>
   </property>
   <property>
-    <name>elastic.index</name>
-    <value>mapred</value>
+    <name>hdfs.collection.enabled</name>
+    <value>false</value>
+    <description>Enable logstash collecting data from this application; true or false
+    </description>
+  </property>
+  <property>
+    <name>hdfs.source.file</name>
+    <value>/var/log/hadoop/hdfs/hadoop-hdfs-datanode-*.log</value>
+    <description>Logstash collects data from this file path.
+    </description>
+  </property>
+  <property>
+    <name>hdfs.source.hosts</name>
+    <value>all</value>
+    <description>Logstash collects data from these hosts; seperate by ",".
+    </description>
+  </property>
+  <property>
+    <name>hdfs.elastic.index</name>
+    <value>hdfs</value>
     <description>Logstash uses this index in Elasticsearch 
     to store collecter data.
     </description>

@@ -14,7 +14,9 @@ filter {
     convert => ["preemptedResources_memory", "integer"]
     convert => ["preemptedResources_vCores", "integer"]
   }
-  ruby {
-    code => "event['executionTime'] = event['finishTime']/1000 - event['startTime']/1000"
+  if [type] == "{{mapred_elastic_index}}" {
+    ruby {
+      code => "event['executionTime'] = event['finishTime']/1000 - event['startTime']/1000"
+    }
   }
 }

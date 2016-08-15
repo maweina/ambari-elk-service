@@ -20,7 +20,7 @@ limitations under the License.
 
 from resource_management import *
 from logstash import logstash
-import os
+import os, sys, signal
 
 class LogstashAgent(Script):
   def install(self, env):
@@ -41,19 +41,23 @@ class LogstashAgent(Script):
     env.set_params(params)
     self.configure(env)
     if len(os.listdir(params.logstash_conf_dir)) > 0:
-        start_cmd = format("{logstash_bin}/logstash agent --config {logstash_conf_dir} --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
+      start_cmd = format("{logstash_bin}/logstash agent --config {logstash_conf_dir} --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
     else:
-        start_cmd = format("{logstash_bin}/logstash agent --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
+      start_cmd = format("{logstash_bin}/logstash agent --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
     Execute(start_cmd) 
     
   def stop(self, env, upgrade_type=None):
     import params
     env.set_params(params)
-    stop_cmd = format("cat {logstash_pid_file} | xargs kill -9")
-    Execute(stop_cmd)
-    File(params.logstash_pid_file,
-         action = "delete"
-    )
+    if os.path.isfile(params.logstash_pid_file):
+      pid = int(file(params.logstash_pid_file,'r').readlines()[0])
+      try:
+        os.kill(pid, signal.SIGKILL)
+      except:
+        pass
+      File(params.logstash_pid_file,
+          action = "delete"
+      )
 
   def status(self, env):
     import params

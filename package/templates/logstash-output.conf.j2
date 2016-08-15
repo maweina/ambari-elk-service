@@ -1,6 +1,0 @@
-output {
-  elasticsearch {
-    hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-    index => "logstash-{{logstash_elastic_index}}"
-  }
-}

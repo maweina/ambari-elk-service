@@ -1,7 +1,8 @@
 input {
   file {
-    path => "{{logstash_source_file}}"
+    path => "{{hdfs_source_file}}"
     sincedb_path => "{{logstash_sincedb_path}}"
     start_position => beginning
+    type => "{{hdfs_elastic_index}}"
   }
 }
