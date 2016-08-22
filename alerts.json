@@ -1,0 +1,18 @@
+{
+  "ELK": {
+    "KIBANA_SERVER": [
+      {
+        "name": "mapred_job",
+        "label": "MapReduce Job Execution Time",
+        "description": "This alert is triggered if the execution time of finished MapReduce Job is greater than 100 seconds.",
+        "interval": 1,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "HDP/2.4/services/ELK/package/scripts/alerts/alert_mapred_long_job.py"
+        }
+      }
+    ]
+  }
+}

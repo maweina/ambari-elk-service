@@ -26,7 +26,7 @@ class LogstashAgent(Script):
   def install(self, env):
     import params
     env.set_params(params)
-    exclude_packages = ['elastic*', 'kibana*']
+    exclude_packages = ['elastic*', 'kibana*', 'python-requests']
     self.install_packages(env, exclude_packages)
     
   def configure(self, env):
