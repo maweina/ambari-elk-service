@@ -97,6 +97,11 @@ As an example, load JSON visualization and dashboard to view the top long runnin
 4. Now you will see the top-10 long running MapReduced Jobs. 
 5. At the upper right corner you can change the time range to view the top-10 jobs at different time.
 
+## MapReduce Job Alert (via Ambari UI web "Alerts")
+1. In Ambari Web, browse to Alerts and select "ELK Default" in Groups dropdown box.
+2. Click "MapReduce Job Execution Time".
+3. This alert is triggered if the execution time of finished MapReduce Jobs is greater than 100 seconds.
+
 ## Add Source Applications (via Ambari Web "Service Configs")
 
 By reconfiguring ELK service *logstash-data-source*, you can collect and visualize more application data. As an example, we collect HDFS logs from all datanodes.
