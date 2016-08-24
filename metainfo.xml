@@ -76,6 +76,11 @@
           </packages>
         </osSpecific>
       </osSpecifics>
+      <commandScript>
+        <script>scripts/service_check.py</script>
+        <scriptType>PYTHON</scriptType>
+        <timeout>300</timeout>
+      </commandScript>
       <configuration-dependencies>
         <config-type>elasticsearch-site</config-type>
         <config-type>logstash-data-source</config-type>

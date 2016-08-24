@@ -80,3 +80,4 @@ hdfs_source_hosts = config['configurations']['logstash-data-source']['hdfs.sourc
 hdfs_elastic_index = config['configurations']['logstash-data-source']['hdfs.elastic.index']
 
 elastic_data_hosts = default("/clusterHostInfo/elastic_datanode_hosts", [])
+kibana_server_hosts = default("/clusterHostInfo/kibana_server_hosts", [])
