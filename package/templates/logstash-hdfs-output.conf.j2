@@ -1,8 +1,0 @@
-output {
-  if [type] == "{{hdfs_elastic_index}}" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-{{hdfs_elastic_index}}"
-    }
-  }
-}

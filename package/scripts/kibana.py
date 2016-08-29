@@ -42,3 +42,10 @@ def kibana(role=None):
        group=params.kibana_user_group,
        mode=0644
     )
+    
+    File(format("{kibana_conf_dir}/kibana-mapred-top10-finished.json"),
+       content = Template("kibana-mapred-top10-finished.json.j2"),
+       owner=params.kibana_user,
+       group=params.kibana_user_group,
+       mode=0644
+    )

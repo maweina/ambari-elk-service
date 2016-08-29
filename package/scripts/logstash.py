@@ -37,50 +37,10 @@ def logstash(role=None):
               recursive=True
             )
 
-    if params.mapred_collection_enabled is True:
-        host_list = params.mapred_source_hosts.split(',')
-        if params.hostname in host_list or host_list[0].strip() == "all":
-            File(format("{logstash_conf_dir}/1-logstash-mapred-input.conf"),
-                content=Template("logstash-mapred-input.conf.j2"),
-                owner=params.logstash_user,
-                group=params.logstash_user_group,
-                mode=0644
-            )
-            
-            File(format("{logstash_conf_dir}/2-logstash-mapred-filter.conf"),
-                content=Template("logstash-mapred-filter.conf.j2"),
-                owner=params.logstash_user,
-                group=params.logstash_user_group,
-                mode=0644
-            )
-            
-            File(format("{logstash_conf_dir}/3-logstash-mapred-output.conf"),
-                content=Template("logstash-mapred-output.conf.j2"),
-                owner=params.logstash_user,
-                group=params.logstash_user_group,
-                mode=0644
-            )
-
-    if params.hdfs_collection_enabled is True:
-        host_list = params.hdfs_source_hosts.split(',')
-        if params.hostname in host_list or host_list[0].strip() == "all":
-            File(format("{logstash_conf_dir}/1-logstash-hdfs-input.conf"),
-                content=Template("logstash-hdfs-input.conf.j2"),
-                owner=params.logstash_user,
-                group=params.logstash_user_group,
-                mode=0644
-            )
-            
-            File(format("{logstash_conf_dir}/2-logstash-hdfs-filter.conf"),
-                content=Template("logstash-hdfs-filter.conf.j2"),
-                owner=params.logstash_user,
-                group=params.logstash_user_group,
-                mode=0644
-            )
-            
-            File(format("{logstash_conf_dir}/3-logstash-hdfs-output.conf"),
-                content=Template("logstash-hdfs-output.conf.j2"),
-                owner=params.logstash_user,
-                group=params.logstash_user_group,
-                mode=0644
-            )
+    if (params.logstash_conf != None):
+        File(format("{logstash_conf_dir}/logstash.conf"),
+             content=InlineTemplate(params.logstash_conf),
+             owner=params.logstash_user,
+             group=params.logstash_user_group,
+             mode=0644
+        )

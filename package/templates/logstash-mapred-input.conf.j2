@@ -1,8 +1,0 @@
-input {
-  file {
-    path => "{{mapred_source_file}}"
-    sincedb_path => "{{logstash_sincedb_path}}"
-    start_position => beginning
-    type => "{{mapred_elastic_index}}"
-  }
-}

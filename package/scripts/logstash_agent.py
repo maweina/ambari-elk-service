@@ -40,10 +40,7 @@ class LogstashAgent(Script):
     import params
     env.set_params(params)
     self.configure(env)
-    if len(os.listdir(params.logstash_conf_dir)) > 0:
-      start_cmd = format("{logstash_bin}/logstash agent --config {logstash_conf_dir} --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
-    else:
-      start_cmd = format("{logstash_bin}/logstash agent --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
+    start_cmd = format("{logstash_bin}/logstash agent -f {logstash_conf_dir}/logstash.conf --log  {logstash_log_dir}/logstash.log & echo $! > {logstash_pid_file} &")
     Execute(start_cmd) 
     
   def stop(self, env, upgrade_type=None):

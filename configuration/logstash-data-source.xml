@@ -20,55 +20,79 @@
  */
 -->
 
-<configuration supports_final="true">
+<configuration>
+  <!-- logstash.conf -->
   <property>
-    <name>mapred.collection.enabled</name>
-    <value>true</value>
-    <description>Enable logstash collecting data from this application; true or false
-    </description>
-  </property>
-  <property>
-    <name>mapred.source.file</name>
-    <value>/var/log/hadoop-yarn/yarn/hadoop-mapreduce.jobsummary.log</value>
-    <description>Logstash collects data from this file path.
-    </description>
-  </property>
-  <property>
-    <name>mapred.source.hosts</name>
-    <value>node2</value>
-    <description>Logstash collects data from these hosts; seperate by ",".
-    </description>
-  </property>
-  <property>
-    <name>mapred.elastic.index</name>
-    <value>mapred</value>
-    <description>Logstash uses this index in Elasticsearch 
-    to store collecter data.
-    </description>
-  </property>
-  <property>
-    <name>hdfs.collection.enabled</name>
-    <value>false</value>
-    <description>Enable logstash collecting data from this application; true or false
-    </description>
-  </property>
-  <property>
-    <name>hdfs.source.file</name>
-    <value>/var/log/hadoop/hdfs/hadoop-hdfs-datanode-*.log</value>
-    <description>Logstash collects data from this file path.
-    </description>
-  </property>
-  <property>
-    <name>hdfs.source.hosts</name>
-    <value>all</value>
-    <description>Logstash collects data from these hosts; seperate by ",".
-    </description>
-  </property>
-  <property>
-    <name>hdfs.elastic.index</name>
-    <value>hdfs</value>
-    <description>Logstash uses this index in Elasticsearch 
-    to store collecter data.
-    </description>
+    <name>content</name>
+    <description>This is logstash configuration file to define input, filter and output.</description>
+    <value>
+# pipeline of mapreduce finished jobs summary
+
+input {
+  file {
+    path => "/var/log/hadoop-yarn/yarn/hadoop-mapreduce.jobsummary.log"
+    sincedb_path => "{{logstash_sincedb_path}}"
+    start_position => beginning
+    type => "mapred"
+  }
+}
+
+filter {
+  grok {
+    match => {   
+      "message" => "\A%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+(?&lt;logger&gt;(?:[a-zA-Z0-9-]+\.)*[A-Za-z0-9$]+)\s*(:\s+)?appId=(?:%{WORD:appId}),name=(?&lt;name&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),user=(?&lt;user&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),queue=(?&lt;queue&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),state=(?:%{WORD:state}),trackingUrl=(?&lt;trackingUrl&gt;(?:.*)),appMasterHost=(?&lt;appMasterHost&gt;(?:.*)),startTime=(?:%{WORD:startTime}),finishTime=(?:%{WORD:finishTime}),finalStatus=(?:%{WORD:finalStatus}),memorySeconds=(?:%{WORD:memorySeconds}),vcoreSeconds=(?:%{WORD:vcoreSeconds}),preemptedAMContainers=(?:%{WORD:preemptedAMContainers}),preemptedNonAMContainers=(?:%{WORD:preemptedNonAMContainers}),preemptedResources=&lt;memory:(?:%{WORD:preemptedResources_memory})(\\,.*)vCores:(?:%{WORD:preemptedResources_vCores})&gt;,applicationType=(?:%{WORD:applicationType})"
+    }
+  }
+  mutate {
+    convert => ["startTime", "integer"]
+    convert => ["finishTime", "integer"]
+    convert => ["memorySeconds", "integer"]
+    convert => ["vcoreSeconds", "integer"]
+    convert => ["preemptedAMContainers", "integer"]
+    convert => ["preemptedNonAMContainers", "integer"]
+    convert => ["preemptedResources_memory", "integer"]
+    convert => ["preemptedResources_vCores", "integer"]
+  }
+  if [type] == "mapred" {
+    ruby {
+      code => "event['executionTime'] = event['finishTime']/1000 - event['startTime']/1000"
+    }
+  }
+}
+
+output {
+  if [type] == "mapred" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-mapred"
+    }
+  }
+}
+
+#pipeline of hdfs datanode logs
+
+input {
+  file {
+    path => "/var/log/hadoop/hdfs/hadoop-hdfs-datanode-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}"
+    start_position => beginning
+    type => "hdfs"
+  }
+}
+
+filter {}
+
+output {
+  if [type] == "hdfs" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hdfs"
+    }
+  }
+}
+    </value>
+    <value-attributes>
+      <show-property-name>false</show-property-name>
+    </value-attributes>
   </property>
 </configuration>
