@@ -43,6 +43,20 @@ def kibana(role=None):
        mode=0644
     )
     
+    File(format("/etc/sysconfig/kibana"),
+       content=Template(format("kibana.sysconfig.j2")),
+       owner=params.kibana_user,
+       group=params.kibana_user_group,
+       mode=0755
+    )
+    
+    File(format("/usr/lib/systemd/system/kibana.service"),
+       content=Template(format("kibana.service.j2")),
+       owner=params.kibana_user,
+       group=params.kibana_user_group,
+       mode=0755
+    )
+    
     File(format("{kibana_conf_dir}/kibana-mapred-top10-finished.json"),
        content = Template("kibana-mapred-top10-finished.json.j2"),
        owner=params.kibana_user,

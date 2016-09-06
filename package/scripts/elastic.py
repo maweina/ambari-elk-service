@@ -52,3 +52,10 @@ def elastic(name=None):
        group=params.elastic_user_group,
        mode=0755
     )
+    
+    File(format("/usr/lib/systemd/system/elasticsearch.service"),
+       content=Template(format("elasticsearch.service.j2")),
+       owner=params.elastic_user,
+       group=params.elastic_user_group,
+       mode=0755
+    )
