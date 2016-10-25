@@ -83,35 +83,36 @@ A link of Kibana UI is added as Quick Links of service ELK.
 
 1. In Ambari Web, browse to Services and click the ELK service in the Service navigation area on the left.
 2. The summary of ELK service is displayed on the right. Click *Quick Links* and select *Kibana UI* in the dropdown box.
-3. In Kibana UI, browse to *Settings* on the top and click *Indices* in the Settings navigation area on the left. 
-4. Configure an index pattern named "logstash-mapred" (must be same with the value of "mapred.elastic.index" defined in "logstash-data-source") and click Create.
+3. In Kibana UI, browse to *Settings* on the top and click *Indices* in the Settings navigation area on the left.
+4. Logon the host where kibana is instanned; run following command to create Kibana index patterns:
+```
+/opt/kibana/config/kibana-create-index-patterns.sh
+```
 5. Browse to *Discover* on the top; now you can interactively explore your data from the Discover page.
+    * logstash-mapred-running is an index of running mapred jobs.
+    * logstash-mapred-finished is an index of finished mapred jobs.
+    * logstash-mapred-aggregated-queue is an index of aggregated memory usage per queue.
+    * logstash-mapred-aggregated-user is an index of aggregated memory usage per user.
+    * logstash-mapred-log is an index of warning or error mapred log.
 
 ## MapReduce Jobs Dashboard (via Kibana UI)
 
-As an example, load JSON visualization and dashboard to view the top long running MapReduce Jobs.
+As an example, load JSON visualization and dashboard to view the MapReduce Jobs.
 
 1. In Ambari Web, browse to *Settings* and click *Objects*.
-2. Click *Import* in the Objects area at top right corner. Select JSON file *ambari-elk-service/package/templates/kibana-mapred-top10-finished.json*.
-3. Browse to *Dashboard* and click the add button. Select the imported dashboard *dashboard-mapred-top10-finished* in the dropdown box.
-4. Now you will see the top-10 long running MapReduced Jobs. 
-5. At the upper right corner you can change the time range to view the top-10 jobs at different time.
+2. Click *Import* in the Objects area at top right corner. Select JSON file *ambari-elk-service/package/templates/kibana-import.json*.
+3. Browse to *Dashboard* and click the *Load Saved Dashboard* button. Select the imported dashboard *dashboard-demo* in the dropdown box.
+4. Now you will see 7 graphs/tables as follows:
+    * The top-10 long finished mapred jobs.
+    * The top-10 long running mapred jobs.
+    * The average running time per queue of mapred jobs.
+    * The average running time per user of mapred jobs.
+    * The memory usage per queue of mapred cluster.
+    * The memory usage per user of mapred cluster.
+    * The warning or error mapred log.
+5. At the upper right corner you can change the time range to view at different time.
 
 ## MapReduce Job Alert (via Ambari UI web "Alerts")
 1. In Ambari Web, browse to Alerts and select "ELK Default" in Groups dropdown box.
 2. Click "MapReduce Job Execution Time".
 3. This alert is triggered if the execution time of finished MapReduce Jobs is greater than 100 seconds.
-
-## Add Source Applications (via Ambari Web "Service Configs")
-
-By reconfiguring ELK service *logstash-data-source*, you can collect and visualize more application data. As an example, we collect HDFS logs from all datanodes.
-
-1. In Ambari Web, browse to Services and click the ELK service in the Service navigation area on the left.
-2. Click *Configs* of ELK service on the right area.
-3. Click *Advanced logstash-data-source* and change *hdfs.collection.enabled* from *false* to *true*. 
-4. Click *Save* and input datanode host names of you hadoop cluster.
-5. A message of *"Restart Required"* will display on the top. Click *Restart* and select *Restart All Affected* in the dropdown box.
-6. Once restart operation completes, click *Quick Links* and select *Kibana UI* in the dropdown box.
-7. In Kibana UI, browse to *Settings* on the top and click *Indices* in the Settings navigation area on the left. 
-8. Configure an index pattern named "logstash-hdfs" (must be same with the value of "hdfs.elastic.index" defined in "logstash-data-source") and click Create.
-9. Browse to *Discover* on the top; now you can interactively explore your data from the Discover page.
