@@ -83,11 +83,11 @@ A link of Kibana UI is added as Quick Links of service ELK.
 
 1. In Ambari Web, browse to Services and click the ELK service in the Service navigation area on the left.
 2. The summary of ELK service is displayed on the right. Click *Quick Links* and select *Kibana UI* in the dropdown box.
-3. In Kibana UI, browse to *Settings* on the top and click *Indices* in the Settings navigation area on the left.
-4. Logon the host where kibana is instanned; run following command to create Kibana index patterns:
+3. Logon the host where kibana is installed; run following script to create Kibana index patterns:
 ```
 /opt/kibana/config/kibana-create-index-patterns.sh
 ```
+4. In Kibana UI, browse to *Settings* on the top and click *Indices* in the Settings navigation area on the left. You will see 5 index patterns.
 5. Browse to *Discover* on the top; now you can interactively explore your data from the Discover page.
     * logstash-mapred-running is an index of running mapred jobs.
     * logstash-mapred-finished is an index of finished mapred jobs.
