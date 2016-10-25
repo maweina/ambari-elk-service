@@ -25,9 +25,10 @@ def logstash(role=None):
     import params
     
     directories = [params.logstash_home,
-                   params.logstash_log_dir, 
+                   params.logstash_log_dir,
                    params.logstash_conf_dir,
-                   params.logstash_pid_dir]
+                   params.logstash_pid_dir,
+                   params.logstash_sincedb_path]
                    
     Directory(directories,
               owner=params.logstash_user,

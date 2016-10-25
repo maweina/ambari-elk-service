@@ -39,8 +39,6 @@ class KibanaMaster(Script):
     self.configure(env)
     start_cmd = format("service kibana start")
     Execute(start_cmd)
-    cmd = format("curl -XPOST -H 'Content-Type: application/json' 'http://localhost:9200/.kibana/visualization/visualize-mapred-top10-finished' --data @{kibana_conf_dir}/kibana-mapred-top10-finished.json")
-    Execute(cmd)
 
   def stop(self, env, upgrade_type=None):
       import params

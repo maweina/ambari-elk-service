@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# create index patterns
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-mapred-finished -d '{"title" : "logstash-mapred-finished",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-mapred-running -d '{"title" : "logstash-mapred-running",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-mapred-aggregated-queue -d '{"title" : "logstash-mapred-aggregated-queue",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-mapred-aggregated-user -d '{"title" : "logstash-mapred-aggregated-user",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-mapred-log -d '{"title" : "logstash-mapred-log",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/config/4.5.4 -d '{"defaultIndex" : "logstash-mapred-running"}'

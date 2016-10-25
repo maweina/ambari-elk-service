@@ -31,62 +31,203 @@
 input {
   file {
     path => "/var/log/hadoop-yarn/yarn/hadoop-mapreduce.jobsummary.log"
-    sincedb_path => "{{logstash_sincedb_path}}"
+    sincedb_path => "{{logstash_sincedb_path}}/mapred.finished.jobsummary"
     start_position => beginning
-    type => "mapred"
+    type => "mapred.finished"
   }
 }
 
 filter {
-  grok {
-    match => {   
-      "message" => "\A%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+(?&lt;logger&gt;(?:[a-zA-Z0-9-]+\.)*[A-Za-z0-9$]+)\s*(:\s+)?appId=(?:%{WORD:appId}),name=(?&lt;name&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),user=(?&lt;user&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),queue=(?&lt;queue&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),state=(?:%{WORD:state}),trackingUrl=(?&lt;trackingUrl&gt;(?:.*)),appMasterHost=(?&lt;appMasterHost&gt;(?:.*)),startTime=(?:%{WORD:startTime}),finishTime=(?:%{WORD:finishTime}),finalStatus=(?:%{WORD:finalStatus}),memorySeconds=(?:%{WORD:memorySeconds}),vcoreSeconds=(?:%{WORD:vcoreSeconds}),preemptedAMContainers=(?:%{WORD:preemptedAMContainers}),preemptedNonAMContainers=(?:%{WORD:preemptedNonAMContainers}),preemptedResources=&lt;memory:(?:%{WORD:preemptedResources_memory})(\\,.*)vCores:(?:%{WORD:preemptedResources_vCores})&gt;,applicationType=(?:%{WORD:applicationType})"
+  if [type] == "mapred.finished" {
+    grok {
+      match => {   
+        "message" => "\A%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+(?&lt;logger&gt;(?:[a-zA-Z0-9-]+\.)*[A-Za-z0-9$]+)\s*(:\s+)?appId=(?:%{WORD:appId}),name=(?&lt;name&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),user=(?&lt;user&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),queue=(?&lt;queue&gt;(?:[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*)),state=(?:%{WORD:state}),trackingUrl=(?&lt;trackingUrl&gt;(?:.*)),appMasterHost=(?&lt;appMasterHost&gt;(?:.*)),startTime=(?:%{WORD:startTime}),finishTime=(?:%{WORD:finishTime}),finalStatus=(?:%{WORD:finalStatus}),memorySeconds=(?:%{WORD:memorySeconds}),vcoreSeconds=(?:%{WORD:vcoreSeconds}),preemptedAMContainers=(?:%{WORD:preemptedAMContainers}),preemptedNonAMContainers=(?:%{WORD:preemptedNonAMContainers}),preemptedResources=&lt;memory:(?:%{WORD:preemptedResources_memory})(\\,.*)vCores:(?:%{WORD:preemptedResources_vCores})&gt;,applicationType=(?:%{WORD:applicationType})"
+      }
     }
-  }
-  mutate {
-    convert => ["startTime", "integer"]
-    convert => ["finishTime", "integer"]
-    convert => ["memorySeconds", "integer"]
-    convert => ["vcoreSeconds", "integer"]
-    convert => ["preemptedAMContainers", "integer"]
-    convert => ["preemptedNonAMContainers", "integer"]
-    convert => ["preemptedResources_memory", "integer"]
-    convert => ["preemptedResources_vCores", "integer"]
-  }
-  if [type] == "mapred" {
+    mutate {
+      convert => ["startTime", "integer"]
+      convert => ["finishTime", "integer"]
+      convert => ["memorySeconds", "integer"]
+      convert => ["vcoreSeconds", "integer"]
+      convert => ["preemptedAMContainers", "integer"]
+      convert => ["preemptedNonAMContainers", "integer"]
+      convert => ["preemptedResources_memory", "integer"]
+      convert => ["preemptedResources_vCores", "integer"]
+    }
     ruby {
       code => "event['executionTime'] = event['finishTime']/1000 - event['startTime']/1000"
     }
+    if ("_grokparsefailure" in [tags]) { drop {} }
   }
 }
 
 output {
-  if [type] == "mapred" {
+  if [type] == "mapred.finished" {
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-mapred"
+      index => "logstash-mapred-finished"
     }
   }
 }
 
-#pipeline of hdfs datanode logs
+# pipeline of mapreduce running jobs
 
 input {
-  file {
-    path => "/var/log/hadoop/hdfs/hadoop-hdfs-datanode-*.log"
-    sincedb_path => "{{logstash_sincedb_path}}"
-    start_position => beginning
-    type => "hdfs"
+  exec {
+    command => "if [ `hostname` == {{elastic_data_hosts[0]}} ]; then mapred job -list > {{logstash_log_dir}}/mapred.running.jobs; fi"
+    interval => 30
   }
 }
 
-filter {}
+input {
+  file {
+    path => "{{logstash_log_dir}}/mapred.running.jobs"
+    sincedb_path => "{{logstash_sincedb_path}}/mapred.running"
+    type => "mapred.running"
+  }
+}
+
+filter {
+  if [type] == "mapred.running" {
+    grok {
+      match => {   
+        "message" => "%{WORD:JobId}\s+%{WORD:State}\s+%{NUMBER:StartTime}\s+%{USER:UserName}\s+%{WORD:Queue}\s+%{WORD:Priority}\s+%{WORD:UsedContainers}\s+%{WORD:RsvdContainers}\s+%{NUMBER:UsedMem}M\s+%{WORD:RsvdMem}\s+%{WORD:NeededMem}\s+%{URI:AMinfo}"
+      }
+    }
+    mutate {
+      convert => ["StartTime", "integer"]
+      convert => ["UsedMem", "integer"]
+    }
+    ruby {
+      code => "
+        time_in_event = Time.iso8601(event['@timestamp'].to_s).to_i;
+        event['executionTime'] = time_in_event - event['StartTime']/1000
+      "
+    }
+    if ("_grokparsefailure" in [tags]) { drop {} }
+  }
+}
 
 output {
-  if [type] == "hdfs" {
+  if [type] == "mapred.running" {
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hdfs"
+      index => "logstash-mapred-running"
+    }
+  }
+}
+
+# pipeline of mapreduce aggregated memory usage per queue
+
+input {
+  file {
+    path => "{{logstash_log_dir}}/mapred.running.jobs"
+    sincedb_path => "{{logstash_sincedb_path}}/mapred.aggregated.queue"
+    type => "mapred.aggregated.queue"
+  }
+}
+
+filter {
+  if [type] == "mapred.aggregated.queue" {
+    grok {
+      match => {   
+        "message" => "%{WORD:JobId}\s+%{WORD:State}\s+%{NUMBER:StartTime}\s+%{USER:UserName}\s+%{WORD:Queue}\s+%{WORD:Priority}\s+%{WORD:UsedContainers}\s+%{WORD:RsvdContainers}\s+%{NUMBER:UsedMem}M\s+%{WORD:RsvdMem}\s+%{WORD:NeededMem}\s+%{URI:AMinfo}"
+      }
+    }
+    mutate {
+      convert => ["UsedMem", "integer"]
+    }
+    aggregate {
+      task_id => "%{Queue}"
+      code => "map['QueueUsedMem'] ||= 0 ; map['QueueUsedMem'] += event['UsedMem']"
+      push_map_as_event_on_timeout => true
+      timeout_task_id_field => "Queue"
+      timeout => 5
+      timeout_tags => ['aggregated.queue']
+    }
+    if "aggregated.queue" not in [tags] { drop {} }
+  }
+}
+
+output {
+  if "aggregated.queue" in [tags] {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-mapred-aggregated-queue"
+    }
+  }
+}
+
+# pipeline of mapreduce aggregated memory usage per user
+
+input {
+  file {
+    path => "{{logstash_log_dir}}/mapred.running.jobs"
+    sincedb_path => "{{logstash_sincedb_path}}/mapred.aggregated.user"
+    type => "mapred.aggregated.user"
+  }
+}
+
+filter {
+  if [type] == "mapred.aggregated.user" {
+    grok {
+      match => {   
+        "message" => "%{WORD:JobId}\s+%{WORD:State}\s+%{NUMBER:StartTime}\s+%{USER:UserName}\s+%{WORD:Queue}\s+%{WORD:Priority}\s+%{WORD:UsedContainers}\s+%{WORD:RsvdContainers}\s+%{NUMBER:UsedMem}M\s+%{WORD:RsvdMem}\s+%{WORD:NeededMem}\s+%{URI:AMinfo}"
+      }
+    }
+    mutate {
+      convert => ["UsedMem", "integer"]
+    }
+    aggregate {
+      task_id => "%{UserName}"
+      code => "map['UserUsedMem'] ||= 0 ; map['UserUsedMem'] += event['UsedMem']"
+      push_map_as_event_on_timeout => true
+      timeout_task_id_field => "UserName"
+      timeout => 5
+      timeout_tags => ['aggregated.user']
+    }
+    if "aggregated.user" not in [tags] { drop {} }
+  }
+}
+
+output {
+  if "aggregated.user" in [tags] {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-mapred-aggregated-user"
+    }
+  }
+}
+
+#pipeline of mapreduce logs
+
+input {
+  file {
+    path => "/var/log/hadoop-mapreduce/mapred/mapred-mapred-historyserver-{{hostname}}.log"
+    sincedb_path => "{{logstash_sincedb_path}}/mapred.log"
+    start_position => beginning
+    type => "mapred.log"
+  }
+}
+
+filter {
+  if [type] == "mapred.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "mapred.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-mapred-log"
     }
   }
 }
