@@ -58,6 +58,21 @@ elastic_pid_file = status_params.elastic_pid_file
 kibana_pid_dir = status_params.kibana_pid_dir
 kibana_pid_file = status_params.kibana_pid_file
 
+hdfs_log_dir_prefix = config['configurations']['hadoop-env']['hdfs_log_dir_prefix']
+hdfs_user = config['configurations']['hadoop-env']['hdfs_user']
+yarn_log_dir_prefix = config['configurations']['yarn-env']['yarn_log_dir_prefix']
+yarn_user = config['configurations']['yarn-env']['yarn_user']
+mapred_log_dir_prefix = config['configurations']['mapred-env']['mapred_log_dir_prefix']
+mapred_user = config['configurations']['mapred-env']['mapred_user']
+hbase_log_dir = config['configurations']['hbase-env']['hbase_log_dir']
+zk_log_dir = config['configurations']['zookeeper-env']['zk_log_dir']
+hive_log_dir = config['configurations']['hive-env']['hive_log_dir']
+webhcat_log_dir = config['configurations']['hive-env']['hcat_log_dir']
+
+rm_hosts = config['clusterHostInfo']['rm_host']
+rm_host = rm_hosts[0]
+rm_port = config['configurations']['yarn-site']['yarn.resourcemanager.webapp.address'].split(':')[-1]
+
 hostname = config['hostname']
 java64_home = config['hostLevelParams']['java_home']
 

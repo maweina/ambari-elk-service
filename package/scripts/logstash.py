@@ -45,3 +45,10 @@ def logstash(role=None):
              group=params.logstash_user_group,
              mode=0644
         )
+        
+    File(format("{logstash_bin}/yarn-capacity.py"),
+         content=Template(format("yarn-capacity.py.j2")),
+         owner=params.logstash_user,
+         group=params.logstash_user_group,
+         mode=0755
+    )

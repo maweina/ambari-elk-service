@@ -72,8 +72,15 @@ ambari-server restart
     * Select one host for Kibana Server.
 5. Assign slave and client components to hosts you want to run them on and click Next.
     * Select all hosts for Logstash Agents.
-    * If Kibana Server host is not an Elasticsearch DataNode, select Elastic ClientNode for Kibana Server host.
-6. Customize services and click Next. You don't have to change any ELK service configuration.
+    * If Kibana Server host is not an Elasticsearch DataNode, select Elastic ClientNode for Kibana Server host. Otherwise, don't select Elastic ClientNode.
+6. Customize services and click Next. 
+   If you have installed all following services and their comopnents, you don't have to change any ELK service configuration.
+   Otherwise, you need remove uninstalled services/componnets in *logstash-data-source*.
+    * HDFS: NameNode, DataNode, JournalNode
+    * YARN: ResourceManager, NodeManager, App Timeline Server
+    * Hive: Hive Metastore, HiveServer2, WebHCat Server
+    * HBase: Master, RegionServer, Phoenix Query Server
+    * Zookeeper: Zookeeper Server
 7. Review the configuration and click Deploy.
 8. Once complete, the ELK service will be available in the Service navigation area.
 
@@ -87,13 +94,27 @@ A link of Kibana UI is added as Quick Links of service ELK.
 ```
 /opt/kibana/config/kibana-create-index-patterns.sh
 ```
-4. In Kibana UI, browse to *Settings* on the top and click *Indices* in the Settings navigation area on the left. You will see 5 index patterns.
+4. In Kibana UI, browse to *Settings* on the top and click *Indices* in the Settings navigation area on the left. You will see following index patterns.
 5. Browse to *Discover* on the top; now you can interactively explore your data from the Discover page.
     * logstash-mapred-running is an index of running mapred jobs.
     * logstash-mapred-finished is an index of finished mapred jobs.
     * logstash-mapred-aggregated-queue is an index of aggregated memory usage per queue.
     * logstash-mapred-aggregated-user is an index of aggregated memory usage per user.
-    * logstash-mapred-log is an index of warning or error mapred log.
+    * logstash-yarn-allocation is an index of allocated memory/vcores per queue among yarn cluster.
+    * logstash-hdfs-namenode-log is an index of warning, error or fatal hdfs namodenode log.
+    * logstash-hdfs-secondarynamenode-log  is an index of warning, error or fatal hdfs secondarynamenode log.
+    * logstash-hdfs-datanode-log is an index of warning, error or fatal hdfs datanode log.
+    * logstash-hdfs-journalnode-log is an index of warning, error or fatal hdfs journalnode log.
+    * logstash-yarn-nodemanager-log  is an index of warning, error or fatal yarn nodemanager log.
+    * logstash-yarn-resourcemanager-log  is an index of warning, error or fatal yarn resourcemanager log.
+    * logstash-yarn-timelineserver-log  is an index of warning, error or fatal yarn timelineserver log.
+    * logstash-hbase-master-log is an index of warning, error or fatal hbase master log.
+    * logstash-hbase-regionserver-log is an index of warning, error or fatal hbase regionserver log.
+    * logstash-hbase-phoenix-log is an index of warning, error or fatal hbase phoenix query server log.
+    * logstash-zookeeper-server-log is an index of warning, error or fatal zookeeper server log.
+    * logstash-hive-metastore-log is an index of warning, error or fatal hive metastore log.
+    * logstash-hive-server2-log is an index of warning, error or fatal hive server2 log.
+    * logstash-hive-webhcat-log is an index of warning, error or fatal hive webhcat log.
 
 ## MapReduce Jobs Dashboard (via Kibana UI)
 
@@ -102,15 +123,17 @@ As an example, load JSON visualization and dashboard to view the MapReduce Jobs.
 1. In Ambari Web, browse to *Settings* and click *Objects*.
 2. Click *Import* in the Objects area at top right corner. Select JSON file *ambari-elk-service/package/templates/kibana-import.json*.
 3. Browse to *Dashboard* and click the *Load Saved Dashboard* button. Select the imported dashboard *dashboard-demo* in the dropdown box.
-4. Now you will see 7 graphs/tables as follows:
+4. Now you will see following graphs/tables:
+    * Allocated memory/vcores per queue in yarn cluster.
     * The top-10 long finished mapred jobs.
     * The top-10 long running mapred jobs.
     * The average running time per queue of mapred jobs.
     * The average running time per user of mapred jobs.
     * The memory usage per queue of mapred cluster.
     * The memory usage per user of mapred cluster.
-    * The warning or error mapred log.
-5. At the upper right corner you can change the time range to view at different time.
+4. Select the imported dashboard *logs* in the dropdown box.
+5. Now you will see warning, error or fatal logs of different service components.
+6. At the upper right corner you can change the time range to view at different time.
 
 ## MapReduce Job Alert (via Ambari UI web "Alerts")
 1. In Ambari Web, browse to Alerts and select "ELK Default" in Groups dropdown box.

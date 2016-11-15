@@ -30,7 +30,7 @@
 
 input {
   file {
-    path => "/var/log/hadoop-yarn/yarn/hadoop-mapreduce.jobsummary.log"
+    path => "{{yarn_log_dir_prefix}}/{{yarn_user}}/hadoop-mapreduce.jobsummary.log"
     sincedb_path => "{{logstash_sincedb_path}}/mapred.finished.jobsummary"
     start_position => beginning
     type => "mapred.finished"
@@ -74,7 +74,7 @@ output {
 
 input {
   exec {
-    command => "if [ `hostname` == {{elastic_data_hosts[0]}} ]; then mapred job -list > {{logstash_log_dir}}/mapred.running.jobs; fi"
+    command => "if [ `hostname` == {{rm_host}} ]; then mapred job -list > {{logstash_log_dir}}/mapred.running.jobs; fi"
     interval => 30
   }
 }
@@ -199,35 +199,492 @@ output {
   }
 }
 
-#pipeline of mapreduce logs
+#pipeline of yarn resource allocation
+input {
+  exec {
+    command => "yes|cp /dev/null {{logstash_log_dir}}/yarn_allocation; python {{logstash_bin}}/yarn-capacity.py > {{logstash_log_dir}}/yarn_allocation"
+    interval => 30
+  }
+}
 
 input {
   file {
-    path => "/var/log/hadoop-mapreduce/mapred/mapred-mapred-historyserver-{{hostname}}.log"
-    sincedb_path => "{{logstash_sincedb_path}}/mapred.log"
-    start_position => beginning
-    type => "mapred.log"
+    path => "{{logstash_log_dir}}/yarn_allocation"
+    sincedb_path => "{{logstash_sincedb_path}}/yarn.allocation"
+    type => "yarn.allocation"
   }
 }
 
 filter {
-  if [type] == "mapred.log" {
+  if [type] == "yarn.allocation" {
+    grok {
+      match => {   
+        "message" => "%{WORD:QueueName}\s+%{NUMBER:TotalMemory}\s+%{NUMBER:TotalvCores}\s+%{NUMBER:UsedMemory}\s+%{NUMBER:UsedvCores}"
+      }
+    }
+    mutate {
+      convert => ["TotalMemory", "integer"]
+      convert => ["TotalvCores", "integer"]
+      convert => ["UsedMemory", "integer"]
+      convert => ["UsedvCores", "integer"]
+    }
+    if ("_grokparsefailure" in [tags]) { drop {} }
+  }
+}
+
+output {
+  if [type] == "yarn.allocation" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-yarn-allocation"
+    }
+  }
+}
+
+#pipeline of hdfs namenode logs
+input {
+  file {
+    path => "{{hdfs_log_dir_prefix}}/{{hdfs_user}}/*-namenode-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hdfs.namenode.log"
+    start_position => beginning
+    type => "hdfs.namenode.log"
+  }
+}
+
+filter {
+  if [type] == "hdfs.namenode.log" {
     grok {
       match => {   
         "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
       }
     }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" {
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
   }
 }
 
 output {
-  if [type] == "mapred.log" {
+  if [type] == "hdfs.namenode.log" {
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-mapred-log"
+      index => "logstash-hdfs-namenode-log"
+    }
+  }
+}
+
+#pipeline of hdfs secondarynamenode logs
+input {
+  file {
+    path => "{{hdfs_log_dir_prefix}}/{{hdfs_user}}/*-secondarynamenode-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hdfs.secondarynamenode.log"
+    start_position => beginning
+    type => "hdfs.secondarynamenode.log"
+  }
+}
+
+filter {
+  if [type] == "hdfs.secondarynamenode.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hdfs.secondarynamenode.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hdfs-secondarynamenode-log"
+    }
+  }
+}
+
+#pipeline of hdfs journalnode logs
+input {
+  file {
+    path => "/{{hdfs_log_dir_prefix}}/{{hdfs_user}}/*-journalnode-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hdfs.journalnode.log"
+    start_position => beginning
+    type => "hdfs.journalnode.log"
+  }
+}
+
+filter {
+  if [type] == "hdfs.journalnode.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hdfs.journalnode.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hdfs-journalnode-log"
+    }
+  }
+}
+
+#pipeline of hdfs datanode logs
+input {
+  file {
+    path => "{{hdfs_log_dir_prefix}}/{{hdfs_user}}/*-datanode-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hdfs.datanode.log"
+    start_position => beginning
+    type => "hdfs.datanode.log"
+  }
+}
+
+filter {
+  if [type] == "hdfs.datanode.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hdfs.datanode.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hdfs-datanode-log"
+    }
+  }
+}
+
+#pipeline of yarn nodemanager logs
+input {
+  file {
+    path => "{{yarn_log_dir_prefix}}/{{yarn_user}}/*-nodemanager-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/yarn.nodemanager.log"
+    start_position => beginning
+    type => "yarn.nodemanager.log"
+  }
+}
+
+filter {
+  if [type] == "yarn.nodemanager.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "yarn.nodemanager.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-yarn-nodemanager-log"
+    }
+  }
+}
+
+#pipeline of yarn resourcemanager logs
+input {
+  file {
+    path => "{{yarn_log_dir_prefix}}/{{yarn_user}}/*-resourcemanager-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/yarn.resourcemanager.log"
+    start_position => beginning
+    type => "yarn.resourcemanager.log"
+  }
+}
+
+filter {
+  if [type] == "yarn.resourcemanager.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "yarn.resourcemanager.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-yarn-resourcemanager-log"
+    }
+  }
+}
+
+#pipeline of yarn timelineserver logs
+input {
+  file {
+    path => "{{yarn_log_dir_prefix}}/{{yarn_user}}/*-timelineserver-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/yarn.timelineserver.log"
+    start_position => beginning
+    type => "yarn.timelineserver.log"
+  }
+}
+
+filter {
+  if [type] == "yarn.timelineserver.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "yarn.timelineserver.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-yarn-timelineserver-log"
+    }
+  }
+}
+
+#pipeline of hbase master logs
+input {
+  file {
+    path => "{{hbase_log_dir}}/*-master-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hbase.master.log"
+    start_position => beginning
+    type => "hbase.master.log"
+  }
+}
+
+filter {
+  if [type] == "hbase.master.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hbase.master.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hbase-master-log"
+    }
+  }
+}
+
+#pipeline of hbase regionserver logs
+input {
+  file {
+    path => "{{hbase_log_dir}}/*-regionserver-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hbase.regionserver.log"
+    start_position => beginning
+    type => "hbase.regionserver.log"
+  }
+}
+
+filter {
+  if [type] == "hbase.regionserver.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hbase.regionserver.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hbase-regionserver-log"
+    }
+  }
+}
+
+#pipeline of hbase phoenix server logs
+input {
+  file {
+    path => "{{hbase_log_dir}}/*-phoenix-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/phoenix-*.log"
+    start_position => beginning
+    type => "hbase.phoenix.log"
+  }
+}
+
+filter {
+  if [type] == "hbase.phoenix.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hbase.phoenix.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hbase-phoenix-log"
+    }
+  }
+}
+
+#pipeline of zookeeper server logs
+input {
+  file {
+    path => "{{zk_log_dir}}/*-server-*.out"
+    sincedb_path => "{{logstash_sincedb_path}}/zookeeper.server.log"
+    start_position => beginning
+    type => "zookeeper.server.log"
+  }
+}
+
+filter {
+  if [type] == "zookeeper.server.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+-\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "zookeeper.server.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-zookeeper-server-log"
+    }
+  }
+}
+
+#pipeline of hive metastore logs
+input {
+  file {
+    path => "{{hive_log_dir}}/hivemetastore.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hive.metastore.log"
+    start_position => beginning
+    type => "hive.metastore.log"
+  }
+}
+
+filter {
+  if [type] == "hive.metastore.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hive.metastore.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hive-metastore-log"
+    }
+  }
+}
+
+#pipeline of hive server2 logs
+input {
+  file {
+    path => "{{hive_log_dir}}/hiveserver2.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hive.server2.log"
+    start_position => beginning
+    type => "hive.server2.log"
+  }
+}
+
+filter {
+  if [type] == "hive.server2.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hive.server2.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hive-server2-log"
+    }
+  }
+}
+
+#pipeline of hive WebHCat Server logs
+input {
+  file {
+    path => "{{webhcat_log_dir}}/webhcat.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hive.webhcat.log"
+    start_position => beginning
+    type => "hive.webhcat.log"
+  }
+}
+
+filter {
+  if [type] == "hive.webhcat.log" {
+    grok {
+      match => {   
+        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
+      }
+    }
+    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
+      drop {}
+    }
+  }
+}
+
+output {
+  if [type] == "hive.webhcat.log" {
+    elasticsearch {
+      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
+      index => "logstash-hive-webhcat-log"
     }
   }
 }
