@@ -49,8 +49,7 @@ class KibanaMaster(Script):
   def status(self, env):
       import params
       env.set_params(params)
-      status_cmd = format("service kibana status")
-      Execute(status_cmd)
+      check_process_status(params.kibana_pid_file)
 
 if __name__ == "__main__":
   KibanaMaster().execute()

@@ -58,20 +58,60 @@ elastic_pid_file = status_params.elastic_pid_file
 kibana_pid_dir = status_params.kibana_pid_dir
 kibana_pid_file = status_params.kibana_pid_file
 
-hdfs_log_dir_prefix = config['configurations']['hadoop-env']['hdfs_log_dir_prefix']
-hdfs_user = config['configurations']['hadoop-env']['hdfs_user']
-yarn_log_dir_prefix = config['configurations']['yarn-env']['yarn_log_dir_prefix']
-yarn_user = config['configurations']['yarn-env']['yarn_user']
-mapred_log_dir_prefix = config['configurations']['mapred-env']['mapred_log_dir_prefix']
-mapred_user = config['configurations']['mapred-env']['mapred_user']
-hbase_log_dir = config['configurations']['hbase-env']['hbase_log_dir']
-zk_log_dir = config['configurations']['zookeeper-env']['zk_log_dir']
-hive_log_dir = config['configurations']['hive-env']['hive_log_dir']
-webhcat_log_dir = config['configurations']['hive-env']['hcat_log_dir']
+hdfs_log_dir_prefix = ""
+hdfs_user = ""
+if 'hadoop-env' in config['configurations']:
+    if 'hdfs_log_dir_prefix' in config['configurations']['hadoop-env']:
+        hdfs_log_dir_prefix = config['configurations']['hadoop-env']['hdfs_log_dir_prefix'] 
+    if 'hdfs_user' in config['configurations']['hadoop-env']:
+        hdfs_user = config['configurations']['hadoop-env']['hdfs_user']
 
-rm_hosts = config['clusterHostInfo']['rm_host']
-rm_host = rm_hosts[0]
-rm_port = config['configurations']['yarn-site']['yarn.resourcemanager.webapp.address'].split(':')[-1]
+yarn_log_dir_prefix = ""
+yarn_user = ""
+if 'yarn-env' in config['configurations']:
+    if 'yarn_log_dir_prefix' in config['configurations']['yarn-env']:
+        yarn_log_dir_prefix = config['configurations']['yarn-env']['yarn_log_dir_prefix']
+    if 'yarn_user' in config['configurations']['yarn-env']:
+        yarn_user = config['configurations']['yarn-env']['yarn_user']
+        
+mapred_log_dir_prefix = ""
+mapred_user = ""
+if 'mapred-env' in config['configurations']:
+    if 'mapred_log_dir_prefix' in config['configurations']['mapred-env']:
+        mapred_log_dir_prefix = config['configurations']['mapred-env']['mapred_log_dir_prefix']
+    if 'mapred_user' in config['configurations']['mapred-env']:
+        mapred_user = config['configurations']['mapred-env']['mapred_user']   
+
+hbase_log_dir = ""
+if 'hbase-env' in config['configurations'] and 'hbase_log_dir' in config['configurations']['hbase-env']:
+    hbase_log_dir = config['configurations']['hbase-env']['hbase_log_dir']
+
+zk_log_dir = ""
+if 'zookeeper-env' in config['configurations'] and 'zk_log_dir' in config['configurations']['zookeeper-env']:
+    zk_log_dir = config['configurations']['zookeeper-env']['zk_log_dir']
+    
+hive_log_dir = ""
+webhcat_log_dir = ""
+if 'hive-env' in config['configurations']:
+    if 'hive_log_dir' in config['configurations']['hive-env']:
+        hive_log_dir = config['configurations']['hive-env']['hive_log_dir']
+    if 'hcat_log_dir' in config['configurations']['hive-env']:
+        webhcat_log_dir = config['configurations']['hive-env']['hcat_log_dir']
+
+rm_host = ""
+if 'clusterHostInfo' in config and 'rm_host' in config['clusterHostInfo']:
+    rm_hosts = config['clusterHostInfo']['rm_host']
+    rm_host = rm_hosts[0]
+else:
+    rm_hosts = default("/clusterHostInfo/rm_host", None)
+    if type(rm_hosts) is list:
+        rm_host = rm_hosts[0]
+    else:
+        rm_host = rm_hosts
+    
+rm_port = 8088
+if 'yarn-site' in config['configurations'] and 'yarn.resourcemanager.webapp.address' in config['configurations']['yarn-site'] and ':' in config['configurations']['yarn-site']['yarn.resourcemanager.webapp.address']:
+    rm_port = config['configurations']['yarn-site']['yarn.resourcemanager.webapp.address'].split(':')[-1]
 
 hostname = config['hostname']
 java64_home = config['hostLevelParams']['java_home']
