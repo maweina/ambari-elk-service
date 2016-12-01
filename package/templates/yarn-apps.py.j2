@@ -1,0 +1,107 @@
+import json
+import requests
+import math
+
+queueCapacity = {}
+memoryTotal = 0
+vcoreTotal = 0
+
+def parse_queue(queueList, parent):
+    global queueCapacity
+    for queue in queueList:
+        name = queue['queueName']
+        path = parent + '.' + name
+        if 'queues' in queue and 'queue' in queue['queues']:
+            parse_queue(queue['queues']['queue'], path)
+        else:
+            capacity = int(queue['absoluteCapacity'])
+            memory = math.ceil(float(capacity * memoryTotal) / 100)
+            vcore = math.ceil(float(capacity * vcoreTotal) / 100)
+            queueCapacity[path] = {}
+            queueCapacity[path]['vcore'] = vcore
+            queueCapacity[path]['memory'] = memory
+            queueCapacity[path]['vcoreFree'] = vcore
+            queueCapacity[path]['memoryFree'] = memory
+            
+def yarn_scheduler():    
+    r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/scheduler')
+    #r = requests.get('http://node2:8088/ws/v1/cluster/scheduler')
+    output = r.json()
+    rootQueue = output['scheduler']['schedulerInfo']['queueName']
+    if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
+        queues = output['scheduler']['schedulerInfo']['queues']['queue']
+        parse_queue(queues, rootQueue)
+        
+def yarn_metics():
+    global memoryTotal
+    global vcoreTotal 
+    r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/metrics')
+    #r = requests.get('http://localhost:8088/ws/v1/cluster/metrics')
+    output = r.json()
+    memoryTotal = int(output['clusterMetrics']['totalMB'])
+    vcoreTotal = int(output['clusterMetrics']['totalVirtualCores'])
+      
+def yarn_apps():
+    r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/apps')
+    #r = requests.get('http://localhost:8088/ws/v1/cluster/apps')
+    output = r.json()
+    apps = output['apps']
+    vcoreUsed = 0
+    memoryUsed = 0
+    if apps is not None:
+        appList = apps['app']
+        for app in appList:
+            id = app['id']
+            type = app['applicationType']
+            state = app['state']
+            finalStatus = app['finalStatus']
+            queue = app['queue']
+            user = app['user']
+            if int(app['allocatedVCores']) > 0:
+                vcores = int(app['allocatedVCores'])
+            else:
+                vcores = 0
+            if int(app['allocatedMB']) > 0:
+                memory = int(app['allocatedMB'])
+            else:
+                memory  = 0
+            if int(app['vcoreSeconds']) > 0:
+                vcoreSeconds = int(app['vcoreSeconds'])
+            else:
+                vcoreSeconds = 0
+            if int(app['memorySeconds']) > 0:
+                memorySeconds = int(app['memorySeconds'])
+            else:
+                memorySeconds = 0
+            elapsedTime = long(app['elapsedTime'])/1000
+            
+            vcoreCapacity = 0
+            memoryCapacity = 0
+            for key, value in queueCapacity.iteritems():
+                if key.split('.')[-1] == queue:
+                    queue = key
+                    vcoreCapacity = value['vcore']
+                    memoryCapacity = value['memory']
+                    value['vcoreFree'] = value['vcoreFree'] - vcores
+                    value['memoryFree'] = value['memoryFree'] - memory
+                    break
+            
+            print "%s %s %s %s %s %s %d %d %d %d %d %d %d" % (id, type, state, finalStatus, queue, user, vcores, memory, vcoreCapacity, memoryCapacity, vcoreSeconds, memorySeconds, elapsedTime)
+            vcoreUsed = vcoreUsed + vcores
+            memoryUsed = memoryUsed + memory
+            
+    for key, value in queueCapacity.iteritems():
+        print "%s %s %s %s %s %s %d %d %d %d %d %d %d" % ("None", "FREE", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0)
+    
+    vcorFree = vcoreTotal - vcoreUsed
+    if vcorFree < 0:
+        vcorFree = 0
+    memoryFree = memoryTotal - memoryUsed
+    if memoryFree < 0:
+        memoryFree = 0
+    print "%s %s %s %s %s %s %d %d %d %d %d %d %d" % ("None", "FREE", "RUNNING", "UNDEFINED", "None", "None", vcoreTotal - vcoreUsed, memoryTotal - memoryUsed, vcoreTotal, memoryTotal, 0, 0, 0)        
+        
+if __name__ == "__main__":
+    yarn_metics()
+    yarn_scheduler()
+    yarn_apps()

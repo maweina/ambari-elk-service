@@ -33,22 +33,10 @@
           </commandScript>
         </component>
         <component>
-          <name>ELASTIC_CLIENTNODE</name>
-          <displayName>Elastic ClientNode</displayName>
-          <category>SLAVE</category>
-          <cardinality>0+</cardinality>
-          <versionAdvertised>true</versionAdvertised>
-          <commandScript>
-            <script>scripts/elastic_slave.py</script>
-            <scriptType>PYTHON</scriptType>
-            <timeout>600</timeout>
-          </commandScript>
-        </component>
-        <component>
           <name>KIBANA_SERVER</name>
           <displayName>Kibana Server</displayName>
           <category>MASTER</category>
-          <cardinality>0+</cardinality>
+          <cardinality>1</cardinality>
           <versionAdvertised>true</versionAdvertised>
           <commandScript>
             <script>scripts/kibana_server.py</script>

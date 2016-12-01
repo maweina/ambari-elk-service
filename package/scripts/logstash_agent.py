@@ -35,8 +35,6 @@ class LogstashAgent(Script):
     # install logstash plugin
     cmd = format("{logstash_bin}/logstash-plugin install logstash-output-elasticsearch")
     Execute(cmd)
-    cmd = format("{logstash_bin}/logstash-plugin install logstash-filter-aggregate")
-    Execute(cmd)
     logstash()
 
   def start(self, env, upgrade_type=None):

@@ -21,17 +21,25 @@ from resource_management import *
 from resource_management.libraries.script.script import Script
 from resource_management.libraries.functions.format import format
 from resource_management.core.resources.system import Execute
+from pprint import pprint
 
 class ServiceCheck(Script):
   def service_check(self, env):
     import params
     env.set_params(params)
+    pprint(env)
 
-    Execute(format("curl -s -o /dev/null -w '%{{http_code}}' http://localhost:{elastic_port} | grep 200"),
+    Execute(format("curl -s -o /dev/null -w '%{{http_code}}' http://{es_host}:{elastic_port} | grep 200"),
       tries = 10,
       try_sleep=3,
       logoutput=True
     )
+    
+    #Execute(format("curl -s -o /dev/null -w '%{{http_code}}' http://{kibana_host}:{kibana_port} | grep 200"),
+    #  tries = 10,
+    #  try_sleep=3,
+    #  logoutput=True
+    #)
 
 if __name__ == "__main__":
     ServiceCheck().execute()

@@ -44,7 +44,7 @@ logstash_home = "/opt/logstash"
 logstash_bin = "/opt/logstash/bin"
 logstash_conf_dir = "/etc/logstash/conf.d"
 logstash_log_dir = "/var/log/logstash"
-logstash_sincedb_path = format("{logstash_log_dir}/.sincedb")
+logstash_sincedb_path = format("{logstash_log_dir}/.sincedb2")
 
 kibana_home = "/opt/kibana"
 kibana_bin = "/opt/kibana/bin"
@@ -126,6 +126,23 @@ if (('logstash-data-source' in config['configurations']) and ('content' in confi
     logstash_conf = config['configurations']['logstash-data-source']['content']
 else:
     logstash_conf = None
-    
-elastic_data_hosts = default("/clusterHostInfo/elastic_datanode_hosts", [])
-kibana_server_hosts = default("/clusterHostInfo/kibana_server_hosts", [])
+
+if 'clusterHostInfo' in config and 'elastic_datanode_hosts' in config['clusterHostInfo']:
+    elastic_data_hosts = config['clusterHostInfo']['elastic_datanode_hosts']
+    es_host = elastic_data_hosts[0]
+else:
+    elastic_data_hosts = default("/clusterHostInfo/elastic_datanode_hosts", None)
+    if type(elastic_data_hosts) is list:
+        es_host = elastic_data_hosts[0]
+    else:
+        es_host = elastic_data_hosts
+
+if 'clusterHostInfo' in config and 'kibana_server_hosts' in config['clusterHostInfo']:
+    kibana_server_hosts = config['clusterHostInfo']['kibana_server_hosts']
+    kibana_host = kibana_server_hosts[0]
+else:
+    kibana_server_hosts = default("/clusterHostInfo/kibana_server_hosts", None)
+    if type(kibana_server_hosts) is list:
+        kibana_host = kibana_server_hosts[0]
+    else:
+        kibana_host = kibana_server_hosts
