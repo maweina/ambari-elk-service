@@ -18,7 +18,7 @@ limitations under the License.
 
 """
 
-from resource_management.libraries.functions.version import format_hdp_stack_version, compare_versions
+#from resource_management.libraries.functions.version import format_hdp_stack_version, compare_versions
 from resource_management import *
 import status_params
 
@@ -127,6 +127,7 @@ if (('logstash-data-source' in config['configurations']) and ('content' in confi
 else:
     logstash_conf = None
 
+elastic_data_hosts = []
 if 'clusterHostInfo' in config and 'elastic_datanode_hosts' in config['clusterHostInfo']:
     elastic_data_hosts = config['clusterHostInfo']['elastic_datanode_hosts']
     es_host = elastic_data_hosts[0]

@@ -25,8 +25,8 @@ class KibanaMaster(Script):
   def install(self, env):
     import params
     env.set_params(params)
-    exclude_packages = ['elastic*', 'logstash*']
-    self.install_packages(env, exclude_packages)
+    #exclude_packages = ['elastic*', 'logstash*']
+    self.install_packages(env)
     
   def configure(self, env):
     import params

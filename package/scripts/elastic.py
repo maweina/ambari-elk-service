@@ -35,8 +35,7 @@ def elastic(name=None):
               owner=params.elastic_user,
               group=params.elastic_user_group,
               mode=0755,
-              cd_access='a',
-              recursive=True
+              cd_access='a'
             )
 
     File(format("{elastic_conf_dir}/elasticsearch.yml"),

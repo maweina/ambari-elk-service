@@ -32,8 +32,7 @@ def kibana(role=None):
               owner=params.kibana_user,
               group=params.kibana_user_group,
               mode=0755,
-              cd_access='a',
-              recursive=True
+              cd_access='a'
             )
 
     File(format("{kibana_conf_dir}/kibana.yml"),
