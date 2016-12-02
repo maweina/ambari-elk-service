@@ -1,6 +1,7 @@
 import json
 import requests
 import math
+import datetime
 
 queueCapacity = {}
 memoryTotal = 0
@@ -25,7 +26,6 @@ def parse_queue(queueList, parent):
             
 def yarn_scheduler():    
     r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/scheduler')
-    #r = requests.get('http://node2:8088/ws/v1/cluster/scheduler')
     output = r.json()
     rootQueue = output['scheduler']['schedulerInfo']['queueName']
     if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
@@ -36,14 +36,12 @@ def yarn_metics():
     global memoryTotal
     global vcoreTotal 
     r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/metrics')
-    #r = requests.get('http://localhost:8088/ws/v1/cluster/metrics')
     output = r.json()
     memoryTotal = int(output['clusterMetrics']['totalMB'])
     vcoreTotal = int(output['clusterMetrics']['totalVirtualCores'])
       
 def yarn_apps():
     r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/apps')
-    #r = requests.get('http://localhost:8088/ws/v1/cluster/apps')
     output = r.json()
     apps = output['apps']
     vcoreUsed = 0
@@ -74,6 +72,11 @@ def yarn_apps():
             else:
                 memorySeconds = 0
             elapsedTime = long(app['elapsedTime'])/1000
+            finishedTime = long(app['finishedTime'])/1000
+            if finishedTime > 0:
+                finishedDate = datetime.datetime.fromtimestamp(finishedTime).strftime('%m%d')
+            else:
+                finishedDate = "None"
             
             vcoreCapacity = 0
             memoryCapacity = 0
@@ -86,12 +89,12 @@ def yarn_apps():
                     value['memoryFree'] = value['memoryFree'] - memory
                     break
             
-            print "%s %s %s %s %s %s %d %d %d %d %d %d %d" % (id, type, state, finalStatus, queue, user, vcores, memory, vcoreCapacity, memoryCapacity, vcoreSeconds, memorySeconds, elapsedTime)
+            print "%s %s %s %s %s %s %d %d %d %d %d %d %d %d %s" % (id, type, state, finalStatus, queue, user, vcores, memory, vcoreCapacity, memoryCapacity, vcoreSeconds, memorySeconds, elapsedTime, finishedDate)
             vcoreUsed = vcoreUsed + vcores
             memoryUsed = memoryUsed + memory
             
     for key, value in queueCapacity.iteritems():
-        print "%s %s %s %s %s %s %d %d %d %d %d %d %d" % ("None", "FREE", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0)
+        print "%s %s %s %s %s %s %d %d %d %d %d %d %d %d %s" % ("None", "FREE", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0, finishedDate)
     
     vcorFree = vcoreTotal - vcoreUsed
     if vcorFree < 0:
@@ -99,7 +102,7 @@ def yarn_apps():
     memoryFree = memoryTotal - memoryUsed
     if memoryFree < 0:
         memoryFree = 0
-    print "%s %s %s %s %s %s %d %d %d %d %d %d %d" % ("None", "FREE", "RUNNING", "UNDEFINED", "None", "None", vcoreTotal - vcoreUsed, memoryTotal - memoryUsed, vcoreTotal, memoryTotal, 0, 0, 0)        
+    print "%s %s %s %s %s %s %d %d %d %d %d %d %d %d %s" % ("None", "FREE", "RUNNING", "UNDEFINED", "None", "None", vcoreTotal - vcoreUsed, memoryTotal - memoryUsed, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate)        
         
 if __name__ == "__main__":
     yarn_metics()

@@ -50,5 +50,26 @@ def logstash(role=None):
          content=Template(format("yarn-apps.py.j2")),
          owner=params.logstash_user,
          group=params.logstash_user_group,
-         mode=0755
+         mode=0644
+    )
+    
+    File(format("{logstash_log_dir}/template-running.json"),
+         content=Template(format("template-running.json.j2")),
+         owner=params.logstash_user,
+         group=params.logstash_user_group,
+         mode=0644
+    )
+    
+    File(format("{logstash_log_dir}/template-disk.json"),
+         content=Template(format("template-disk.json.j2")),
+         owner=params.logstash_user,
+         group=params.logstash_user_group,
+         mode=0644
+    )
+    
+    File(format("{logstash_log_dir}/template-finished.json"),
+         content=Template(format("template-finished.json.j2")),
+         owner=params.logstash_user,
+         group=params.logstash_user_group,
+         mode=0644
     )
