@@ -25,7 +25,7 @@ class ElasticMaster(Script):
   def install(self, env):
     import params
     env.set_params(params)
-    exclude_packages = ['kibana*', 'logstash*', 'python-requests']
+    #exclude_packages = ['kibana*', 'logstash*', 'python-requests']
     self.install_packages(env)
     
   def configure(self, env):
