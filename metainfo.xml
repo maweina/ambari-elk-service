@@ -60,9 +60,11 @@
             </package>
             <package>
               <name>elasticsearch</name>
+              <condition>should_install_es</condition>
             </package>
             <package>
               <name>kibana</name>
+              <condition>should_install_kibana</condition>
             </package>
             <package>
               <name>python-requests</name>
