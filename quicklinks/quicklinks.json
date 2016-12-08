@@ -1,0 +1,27 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol": {
+      "type":"HTTP_ONLY"
+    },
+
+    "links": [
+      {
+        "name": "ELK",
+        "label": "Kibana",
+        "requires_user_name": "false",
+        "component_name": "KIBANA_SERVER",
+        "url":"%@://%@:%@",
+        "port": {
+          "http_property": "server.port",
+          "http_default_port": "5601",
+          "https_property": "server.port",
+          "https_default_port": "5601",
+          "regex": "\\w*:(\\d+)",
+          "site": "kibana-site"
+        }
+      }
+    ]
+  }
+}
