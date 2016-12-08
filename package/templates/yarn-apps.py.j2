@@ -94,6 +94,10 @@ def yarn_apps():
             memoryUsed = memoryUsed + memory
             
     for key, value in queueCapacity.iteritems():
+        if value['vcoreFree'] < 0:
+            value['vcoreFree'] = 0;
+        if value['memoryFree'] < 0:
+            value['memoryFree'] = 0;
         print "%s %s %s %s %s %s %d %d %d %d %d %d %d %s" % ("None", "FREE", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0, finishedDate)
     
     vcorFree = vcoreTotal - vcoreUsed
@@ -102,7 +106,7 @@ def yarn_apps():
     memoryFree = memoryTotal - memoryUsed
     if memoryFree < 0:
         memoryFree = 0
-    print "%s %s %s %s %s %s %d %d %d %d %d %d %d %s" % ("None", "FREE", "RUNNING", "UNDEFINED", "None", "None", vcoreTotal - vcoreUsed, memoryTotal - memoryUsed, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate)        
+    print "%s %s %s %s %s %s %d %d %d %d %d %d %d %s" % ("None", "FREE", "RUNNING", "UNDEFINED", "None", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate)        
         
 if __name__ == "__main__":
     yarn_metics()
