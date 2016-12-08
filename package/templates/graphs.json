@@ -34,6 +34,91 @@
     }
   },
   {
+    "_id": "log-yarn",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-yarn",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-yarn-resourcemanager\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-yarn-timelineserver\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-yarn-nodemanager\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-hdfs",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-hdfs",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-namenode\",\"panelIndex\":1,\"row\":1,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-datanode\",\"panelIndex\":2,\"row\":9,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-secondarynamenode\",\"panelIndex\":3,\"row\":5,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-hbase",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-hbase-master\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-regionserver\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-phoenix\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-zk",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-zk",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-zk\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":12,\"size_y\":6,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-hive",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-hive",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-hive-metastore\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hive-server2\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
     "_id": "mr-finished",
     "_type": "search",
     "_source": {
@@ -94,6 +179,26 @@
     }
   },
   {
+    "_id": "spark-finished",
+    "_type": "search",
+    "_source": {
+      "title": "spark-finished",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
     "_id": "mr-finished-root.default",
     "_type": "search",
     "_source": {
@@ -130,26 +235,6 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"appType:MAPREDUCE AND appState:RUNNING\"}}}"
-      }
-    }
-  },
-  {
-    "_id": "spark-finished",
-    "_type": "search",
-    "_source": {
-      "title": "spark-finished",
-      "description": "",
-      "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "@timestamp",
-        "desc"
-      ],
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED\",\"analyze_wildcard\":true}}}"
       }
     }
   },
@@ -214,17 +299,348 @@
     }
   },
   {
-    "_id": "top-10-mr-cpu",
-    "_type": "visualization",
+    "_id": "log-hdfs-secondarynamenode",
+    "_type": "search",
     "_source": {
-      "title": "top-10-mr-cpu",
-      "visState": "{\"title\":\"top-10-mr-cpu\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vCoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top-10 CPU consuming Mapreduce Applications\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"vCoreSeconds\":\"#9AC48A\"}}}",
+      "title": "log-hdfs-secondarynamenode",
       "description": "",
-      "savedSearchId": "mr-finished",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.secondarynamenode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hdfs-namenode",
+    "_type": "search",
+    "_source": {
+      "title": "log-hdfs-namenode",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.namenode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hdfs-datanode",
+    "_type": "search",
+    "_source": {
+      "title": "log-hdfs-datanode",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.datanode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase-regionserver",
+    "_type": "search",
+    "_source": {
+      "title": "log-hbase-regionserver",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hbase-log\",\"query\":{\"query_string\":{\"query\":\"type:hbase.regionserver\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-yarn-resourcemanager",
+    "_type": "search",
+    "_source": {
+      "title": "log-yarn-resourcemanager",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-log\",\"query\":{\"query_string\":{\"query\":\"type:yarn.resourcemanager\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-yarn-timelineserver",
+    "_type": "search",
+    "_source": {
+      "title": "log-yarn-timelineserver",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-log\",\"query\":{\"query_string\":{\"query\":\"type:yarn.timelineserver\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase-phoenix",
+    "_type": "search",
+    "_source": {
+      "title": "log-hbase-phoenix",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hbase-log\",\"query\":{\"query_string\":{\"query\":\"type:hbase.phoenix\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-yarn-nodemanager",
+    "_type": "search",
+    "_source": {
+      "title": "log-yarn-nodemanager",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-log\",\"query\":{\"query_string\":{\"query\":\"type:yarn.nodemanager\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase-master",
+    "_type": "search",
+    "_source": {
+      "title": "log-hbase-master",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hbase-log\",\"query\":{\"query_string\":{\"query\":\"type:hbase.master\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-zk",
+    "_type": "search",
+    "_source": {
+      "title": "log-zk",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-zookeeper-server-log\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hive-server2",
+    "_type": "search",
+    "_source": {
+      "title": "log-hive-server2",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hive-log\",\"query\":{\"query_string\":{\"query\":\"type: hive.server2\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hive-metastore",
+    "_type": "search",
+    "_source": {
+      "title": "log-hive-metastore",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hive-log\",\"query\":{\"query_string\":{\"query\":\"type: hive.metastore\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "disk",
+    "_type": "visualization",
+    "_source": {
+      "title": "disk",
+      "visState": "{\"title\":\"disk\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":false,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"used\",\"customLabel\":\"Used\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Cluster Disk usage\"}},{\"id\":\"3\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"total\",\"customLabel\":\"Total\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Sum of total\":\"#508642\",\"Sum of used\":\"#E24D42\",\"Used\":\"#BF1B00\",\"Total\":\"#508642\"},\"legendOpen\":true},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-disk\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "tenant-final-state",
+    "_type": "visualization",
+    "_source": {
+      "title": "tenant-final-state",
+      "visState": "{\"title\":\"tenant-final-state\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"queue\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Multi-tenant application final status\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "tenant-finished-final",
+    "_type": "visualization",
+    "_source": {
+      "title": "tenant-finished-final",
+      "visState": "{\"title\":\"tenant-finished-final\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Multi-tenant finished application final status\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "app-type-cpu",
+    "_type": "visualization",
+    "_source": {
+      "title": "app-type-cpu",
+      "visState": "{\"title\":\"app-type-cpu\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\",\"customLabel\":\"vCores\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"CPU utilization of different type of applications\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT (appId:None AND NOT(queue:None))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "app-type-mem",
+    "_type": "visualization",
+    "_source": {
+      "title": "app-type-mem",
+      "visState": "{\"title\":\"app-type-mem\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Memory utilization of different type of applications\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":100,\"order\":\"asc\",\"orderBy\":\"_term\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT (appId:None AND NOT(queue:None))\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -289,21 +705,6 @@
     }
   },
   {
-    "_id": "top-10-spark-mem",
-    "_type": "visualization",
-    "_source": {
-      "title": "top-10-spark-mem",
-      "visState": "{\"title\":\"top-10-spark-mem\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top-10 memory consuming Spark applications\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "savedSearchId": "spark-finished",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
     "_id": "top-10-spark-cpu",
     "_type": "visualization",
     "_source": {
@@ -319,14 +720,14 @@
     }
   },
   {
-    "_id": "top-10-spark-run-time",
+    "_id": "top-10-spark-mem",
     "_type": "visualization",
     "_source": {
-      "title": "top-10-spark-run-time",
-      "visState": "{\"title\":\"top-10-spark-run-time\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top-10 long running Spark applications\"}}],\"listeners\":{}}",
+      "title": "top-10-spark-mem",
+      "visState": "{\"title\":\"top-10-spark-mem\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top-10 memory consuming Spark applications\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
-      "savedSearchId": "spark-run",
+      "savedSearchId": "spark-finished",
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
@@ -342,6 +743,21 @@
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "queues",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "top-10-spark-run-time",
+    "_type": "visualization",
+    "_source": {
+      "title": "top-10-spark-run-time",
+      "visState": "{\"title\":\"top-10-spark-run-time\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top-10 long running Spark applications\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "spark-run",
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
@@ -375,122 +791,6 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "top-10-mr-time-root.default",
-    "_type": "visualization",
-    "_source": {
-      "title": "top-10-mr-time-root.default",
-      "visState": "{\"title\":\"top-10-mr-time-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 time-consuming Mapreduce applications of tenant root.default\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "savedSearchId": "mr-finished-root.default",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "top-10-time-spark-root.default",
-    "_type": "visualization",
-    "_source": {
-      "title": "top-10-time-spark-root.default",
-      "visState": "{\"title\":\"top-10-time-spark-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 time-consuming Spark applications of tenant root.default\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "savedSearchId": "spark-finished-root.default",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "top-10-spark-mem-root.default",
-    "_type": "visualization",
-    "_source": {
-      "title": "top-10-spark-mem-root.default",
-      "visState": "{\"title\":\"top-10-spark-mem-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 memory-consuming Spark applications of tenant root.default\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "savedSearchId": "spark-finished-root.default",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "top-10-spark-cpu-root.default",
-    "_type": "visualization",
-    "_source": {
-      "title": "top-10-spark-cpu-root.default",
-      "visState": "{\"title\":\"top-10-spark-cpu-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 CPU-consuming Spark applications of tenant root.default\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "savedSearchId": "spark-finished-root.default",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "disk",
-    "_type": "visualization",
-    "_source": {
-      "title": "disk",
-      "visState": "{\"title\":\"disk\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":false,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"used\",\"customLabel\":\"Used\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Cluster Disk usage\"}},{\"id\":\"3\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"total\",\"customLabel\":\"Total\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"Sum of total\":\"#508642\",\"Sum of used\":\"#E24D42\",\"Used\":\"#BF1B00\",\"Total\":\"#508642\"},\"legendOpen\":true},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-disk\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "tenant-final-state",
-    "_type": "visualization",
-    "_source": {
-      "title": "tenant-final-state",
-      "visState": "{\"title\":\"tenant-final-state\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"queue\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Multi-tenant application final status\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "tenant-finished-final",
-    "_type": "visualization",
-    "_source": {
-      "title": "tenant-finished-final",
-      "visState": "{\"title\":\"tenant-finished-final\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Multi-tenant finished application final status\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "app-type-cpu",
-    "_type": "visualization",
-    "_source": {
-      "title": "app-type-cpu",
-      "visState": "{\"title\":\"app-type-cpu\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\",\"customLabel\":\"vCores\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"CPU utilization of different type of applications\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT (appId:None AND NOT(queue:None))\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -600,16 +900,77 @@
     }
   },
   {
-    "_id": "app-type-mem",
+    "_id": "top-10-mr-time-root.default",
     "_type": "visualization",
     "_source": {
-      "title": "app-type-mem",
-      "visState": "{\"title\":\"app-type-mem\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Memory utilization of different type of applications\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":100,\"order\":\"asc\",\"orderBy\":\"_term\"}}],\"listeners\":{}}",
+      "title": "top-10-mr-time-root.default",
+      "visState": "{\"title\":\"top-10-mr-time-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 time-consuming Mapreduce applications of tenant root.default\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
+      "savedSearchId": "mr-finished-root.default",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT (appId:None AND NOT(queue:None))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "top-10-time-spark-root.default",
+    "_type": "visualization",
+    "_source": {
+      "title": "top-10-time-spark-root.default",
+      "visState": "{\"title\":\"top-10-time-spark-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 time-consuming Spark applications of tenant root.default\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "spark-finished-root.default",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "top-10-spark-mem-root.default",
+    "_type": "visualization",
+    "_source": {
+      "title": "top-10-spark-mem-root.default",
+      "visState": "{\"title\":\"top-10-spark-mem-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 memory-consuming Spark applications of tenant root.default\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "spark-finished-root.default",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "top-10-spark-cpu-root.default",
+    "_type": "visualization",
+    "_source": {
+      "title": "top-10-spark-cpu-root.default",
+      "visState": "{\"title\":\"top-10-spark-cpu-root.default\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top 10 CPU-consuming Spark applications of tenant root.default\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "spark-finished-root.default",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "top-10-mr-cpu",
+    "_type": "visualization",
+    "_source": {
+      "title": "top-10-mr-cpu",
+      "visState": "{\"title\":\"top-10-mr-cpu\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vCoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Top-10 CPU consuming Mapreduce Applications\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"vCoreSeconds\":\"#9AC48A\"}}}",
+      "description": "",
+      "savedSearchId": "mr-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
       }
     }
   },
@@ -618,7 +979,7 @@
     "_type": "visualization",
     "_source": {
       "title": "time-finalstatus-root.default",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"finishedDate\",\"size\":100,\"order\":\"asc\",\"orderBy\":\"_term\",\"customLabel\":\"Application final status of tenant root.default\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"time-finalstatus-root.default\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"finishedDate\",\"size\":100,\"order\":\"asc\",\"orderBy\":\"_term\",\"customLabel\":\"Application final status of tenant root.default\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "finished-root.default",

@@ -73,14 +73,6 @@ if 'yarn-env' in config['configurations']:
         yarn_log_dir_prefix = config['configurations']['yarn-env']['yarn_log_dir_prefix']
     if 'yarn_user' in config['configurations']['yarn-env']:
         yarn_user = config['configurations']['yarn-env']['yarn_user']
-        
-mapred_log_dir_prefix = ""
-mapred_user = ""
-if 'mapred-env' in config['configurations']:
-    if 'mapred_log_dir_prefix' in config['configurations']['mapred-env']:
-        mapred_log_dir_prefix = config['configurations']['mapred-env']['mapred_log_dir_prefix']
-    if 'mapred_user' in config['configurations']['mapred-env']:
-        mapred_user = config['configurations']['mapred-env']['mapred_user']   
 
 hbase_log_dir = ""
 if 'hbase-env' in config['configurations'] and 'hbase_log_dir' in config['configurations']['hbase-env']:
