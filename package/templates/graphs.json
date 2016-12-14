@@ -626,7 +626,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT (appId:None AND NOT(queue:None))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -640,7 +640,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT (appId:None AND NOT(queue:None))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -664,7 +664,7 @@
     "_type": "visualization",
     "_source": {
       "title": "queue-cpu",
-      "visState": "{\"title\":\"queue-cpu\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Multi-tenant CPU utilization\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"queue-cpu\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Multi-tenant CPU utilization\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "queues",
@@ -739,7 +739,7 @@
     "_type": "visualization",
     "_source": {
       "title": "queue-mem",
-      "visState": "{\"title\":\"queue-mem\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Multi-tenant Memory utilization\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"queue-mem\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Multi-tenant Memory utilization\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "queues",
@@ -829,7 +829,7 @@
     "_type": "visualization",
     "_source": {
       "title": "queue-root.default-mem",
-      "visState": "{\"title\":\"queue-root.default-mem\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":3,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Memory utilization of tenant root.default\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"queue-root.default-mem\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":3,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Memory utilization of tenant root.default\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "queue-root.default",
@@ -844,7 +844,7 @@
     "_type": "visualization",
     "_source": {
       "title": "queue-root.default-cpu",
-      "visState": "{\"title\":\"queue-root.default-cpu\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":3,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"CPU utilization of tenant root.default\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"queue-root.default-cpu\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"appType\",\"size\":3,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"CPU utilization of tenant root.default\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "savedSearchId": "queue-root.default",

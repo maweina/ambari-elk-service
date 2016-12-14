@@ -4,7 +4,7 @@
   <services>
     <service>
       <name>ELK</name>
-      <displayName>ELK</displayName>
+      <displayName>OCCI</displayName>
       <comment>Log Analysis with the ELK stack (Elasticsearch, Logstash, Kibana)</comment>
       <version>0.1.0</version>
       <quickLinksConfigurations>

@@ -83,8 +83,8 @@ def yarn_apps():
                 finishedWeek = datetime.datetime.fromtimestamp(finishedTime).strftime('%W')
             else:
                 finishedDate = "None"
-                # set the time to 1970-01-01T08:00:00 for the running jobs
-                selfFinishedTime = datetime.datetime.fromtimestamp(0).isoformat()
+                # if the job is running set the time to current time
+                selfFinishedTime = datetime.datetime.fromtimestamp(int(time.time())).isoformat()
                 finishedHour = "None"
                 finishedWeek = "None"
             
@@ -117,6 +117,7 @@ def yarn_apps():
     if memoryFree < 0:
         memoryFree = 0
     print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "None", "FREE", "RUNNING", "UNDEFINED", "None", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
+    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "Others", "FREE", "RUNNING", "UNDEFINED", "Others", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
 
 if __name__ == "__main__":
     yarn_metics()
