@@ -75,6 +75,7 @@ def yarn_apps():
             finishedTime = long(app['finishedTime'])/1000
             if finishedTime > 0:
                 finishedDate = datetime.datetime.fromtimestamp(finishedTime).strftime('%m%d')
+                finishedDate = datetime.datetime.fromtimestamp(finishedTime).strftime('%m%d')
             else:
                 finishedDate = "None"
             
