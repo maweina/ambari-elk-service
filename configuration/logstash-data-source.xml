@@ -43,7 +43,7 @@ input {
 filter {
   if [type] == "yarn.apps" {
     grok {
-      match => {
+      match => { 
         "message" => "%{TIMESTAMP_ISO8601:logdate}\s+%{GREEDYDATA:appId}\s+%{WORD:appType}\s+%{WORD:appState}\s+%{WORD:finalStatus}\s+%{GREEDYDATA:queue}\s+%{GREEDYDATA:user}\s+%{NUMBER:vCores}\s+%{NUMBER:memory}\s+%{NUMBER:vCoreCapacity}\s+%{NUMBER:memoryCapacity}\s+%{NUMBER:vcoreSeconds}\s+%{NUMBER:memorySeconds}\s+%{NUMBER:elapsedTime}\s+%{GREEDYDATA:finishedDate}\s+%{TIMESTAMP_ISO8601:finishedTime}\s+%{GREEDYDATA:finishedHour}\s+%{GREEDYDATA:finishedWeek}"
       }
     }
