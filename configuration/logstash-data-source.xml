@@ -89,7 +89,7 @@ output {
 input {
   exec {
     command => "df --total -l -BG|grep total"
-    interval => 60
+    interval => 3600
     type => "disk"
   }
 }
