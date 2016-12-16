@@ -66,7 +66,7 @@ output {
     if [appState] == "RUNNING" or [vCores] != 0 or [memory] != 0 {
       elasticsearch {
         hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-        index => "logstash-yarn-running"
+        index => "mylogstash-yarn-running"
         template => "{{logstash_log_dir}}/template-running.json"
         template_name => "logstash-yarn-running"
       }
@@ -74,7 +74,7 @@ output {
     if [appType] != "FREE" {
       elasticsearch {
         hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-        index => "logstash-yarn-apps"
+        index => "mylogstash-yarn-apps"
         document_id => "yarn-%{appId}"
         doc_as_upsert => true
         action => "update"
