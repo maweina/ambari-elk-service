@@ -1,0 +1,14 @@
+
+{% raw %}
+{
+  "template": "logstash-*-log",
+  "mappings": {
+    "_default_": {
+      "_ttl": {
+        "enabled": true,
+        "default": "3d"
+      }
+    }
+  }
+}
+{% endraw %}

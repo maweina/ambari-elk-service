@@ -148,6 +148,9 @@ output {
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
       index => "logstash-hdfs-log"
+      template => "{{logstash_log_dir}}/template-service-log.json"
+      template_name => "logstash-service-log"
+      template_overwrite => true
     }
   }
 }
@@ -467,7 +470,7 @@ output {
   if [type] == "zookeeper.server" {
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-zookeeper-server-log"
+      index => "logstash-zookeeper-log"
     }
   }
 }
