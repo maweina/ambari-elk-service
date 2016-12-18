@@ -134,7 +134,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -154,7 +154,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:MAPREDUCE AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:MAPREDUCE AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -174,7 +174,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"queue: root.default AND appState: FINISHED\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"queue: root.default AND appState: FINISHED\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -194,7 +194,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND state=FINISHED AND queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND state=FINISHED AND queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -214,7 +214,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"appType:MAPREDUCE AND appState:RUNNING\"}}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"appType:MAPREDUCE AND appState:RUNNING\"}}}"
       }
     }
   },
@@ -234,7 +234,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appState: FINISHED AND appType: MAPREDUCE\",\"analyze_wildcard\":true}}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appState: FINISHED AND appType: MAPREDUCE\",\"analyze_wildcard\":true}}}"
       }
     }
   },
@@ -254,7 +254,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"queue: root.Engineering.QE AND appState: FINISHED\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"queue: root.Engineering.QE AND appState: FINISHED\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -274,7 +274,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:RUNNING\",\"analyze_wildcard\":true}}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:RUNNING\",\"analyze_wildcard\":true}}}"
       }
     }
   },
@@ -294,7 +294,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:MAPREDUCE AND state=FINISHED AND queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:MAPREDUCE AND state=FINISHED AND queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -314,7 +314,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED\",\"analyze_wildcard\":true}}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED\",\"analyze_wildcard\":true}}}"
       }
     }
   },
@@ -334,7 +334,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -354,7 +354,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -374,7 +374,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"(NOT queue: None) AND (NOT appId:None)\",\"analyze_wildcard\":true}}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"(NOT queue: None) AND (NOT appId:None)\",\"analyze_wildcard\":true}}}"
       }
     }
   },
@@ -388,7 +388,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -402,7 +402,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -416,7 +416,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },

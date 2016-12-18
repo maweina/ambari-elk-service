@@ -72,3 +72,9 @@ def logstash(role=None):
          group=params.logstash_user_group,
          mode=0644
     )
+    File(format("{logstash_log_dir}/template-service-log.json"),
+         content=Template(format("template-service-log.json.j2")),
+         owner=params.logstash_user,
+         group=params.logstash_user_group,
+         mode=0644
+    )
