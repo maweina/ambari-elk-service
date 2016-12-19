@@ -108,7 +108,7 @@ def yarn_apps():
             value['vcoreFree'] = 0;
         if value['memoryFree'] < 0:
             value['memoryFree'] = 0;
-        print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "None", "FREE", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
+        print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "None", "OTHERS", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
 
     vcorFree = vcoreTotal - vcoreUsed
     if vcorFree < 0:
@@ -116,8 +116,8 @@ def yarn_apps():
     memoryFree = memoryTotal - memoryUsed
     if memoryFree < 0:
         memoryFree = 0
-    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "None", "FREE", "RUNNING", "UNDEFINED", "None", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
-    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "Others", "FREE", "RUNNING", "UNDEFINED", "Others", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
+    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "None", "OTHERS", "RUNNING", "UNDEFINED", "None", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
+    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s %s %s" % (selfTimestamp, "Others", "OTHERS", "RUNNING", "UNDEFINED", "Others", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime, finishedHour, finishedWeek)
 
 if __name__ == "__main__":
     yarn_metics()
