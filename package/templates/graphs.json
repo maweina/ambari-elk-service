@@ -1,18 +1,18 @@
 [
   {
-    "_id": "log-hbase",
+    "_id": "cluster",
     "_type": "dashboard",
     "_source": {
-      "title": "log-hbase",
+      "title": "cluster",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"id\":\"log-hbase-master\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-regionserver\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-phoenix\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utiliaziton-by-Workload-Type\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utiliaziton-by-Workload-Type\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"CPU-Consuming-Top10-MapReduce-Jobs\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"CPU-Consuming-Top10-Spark-Jobs\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Memory-Consuming-Top10-Mapreduce-Jobs\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Consuming-Top10-Spark-Jobs\",\"panelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Consuming-Top10-Mapreduce-Jobs\",\"panelIndex\":7,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Consuming-Top10-Spark-Jobs\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Consuming-Top10-Running-Mapreduce-Jobs\",\"panelIndex\":9,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Consuming-Top10-Running-Spark-Jobs\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-Mapreduce-Jobs\",\"panelIndex\":11,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Jobs-Statistics-by-Queues\",\"panelIndex\":14,\"row\":25,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Disk-Utilization\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":25}]",
       "optionsJSON": "{\"darkTheme\":true}",
-      "uiStateJSON": "{}",
+      "uiStateJSON": "{\"P-10\":{\"vis\":{\"legendOpen\":false}},\"P-3\":{\"vis\":{\"legendOpen\":false}},\"P-4\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-5\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-6\":{\"vis\":{\"legendOpen\":false}},\"P-7\":{\"vis\":{\"legendOpen\":false}},\"P-8\":{\"vis\":{\"legendOpen\":false}},\"P-9\":{\"vis\":{\"legendOpen\":false}},\"P-15\":{\"vis\":{\"colors\":{\"Max used\":\"#3F6833\",\"Max avail\":\"#BF1B00\",\"Total\":\"#BF1B00\",\"Used\":\"#508642\",\"Total in GB\":\"#508642\",\"Used in GB\":\"#890F02\"}}}}",
       "version": 1,
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
       }
     }
   },
@@ -30,40 +30,6 @@
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
-      }
-    }
-  },
-  {
-    "_id": "log-hive",
-    "_type": "dashboard",
-    "_source": {
-      "title": "log-hive",
-      "hits": 0,
-      "description": "",
-      "panelsJSON": "[{\"id\":\"log-hive-metastore\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hive-server2\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
-      "optionsJSON": "{\"darkTheme\":true}",
-      "uiStateJSON": "{}",
-      "version": 1,
-      "timeRestore": false,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
-      }
-    }
-  },
-  {
-    "_id": "log-zk",
-    "_type": "dashboard",
-    "_source": {
-      "title": "log-zk",
-      "hits": 0,
-      "description": "",
-      "panelsJSON": "[{\"id\":\"log-zk\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":12,\"size_y\":6,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
-      "optionsJSON": "{\"darkTheme\":true}",
-      "uiStateJSON": "{}",
-      "version": 1,
-      "timeRestore": false,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
       }
     }
   },
@@ -102,119 +68,53 @@
     }
   },
   {
-    "_id": "cluster",
+    "_id": "log-hbase",
     "_type": "dashboard",
     "_source": {
-      "title": "cluster",
+      "title": "log-hbase",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utiliaziton-by-Workload-Type\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utiliaziton-by-Workload-Type\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"CPU-Consuming-Top10-MapReduce-Jobs\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"CPU-Consuming-Top10-Spark-Jobs\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Memory-Consuming-Top10-Mapreduce-Jobs\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Consuming-Top10-Spark-Jobs\",\"panelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Consuming-Top10-Mapreduce-Jobs\",\"panelIndex\":7,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Consuming-Top10-Spark-Jobs\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Consuming-Top10-Running-Mapreduce-Jobs\",\"panelIndex\":9,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Consuming-Top10-Running-Spark-Jobs\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-Mapreduce-Jobs\",\"panelIndex\":11,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Jobs-Statistics-by-Queues\",\"panelIndex\":14,\"row\":25,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Disk-Utilization\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":25}]",
+      "panelsJSON": "[{\"id\":\"log-hbase-master\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-regionserver\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-phoenix\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
       "optionsJSON": "{\"darkTheme\":true}",
-      "uiStateJSON": "{\"P-10\":{\"vis\":{\"legendOpen\":false}},\"P-3\":{\"vis\":{\"legendOpen\":false}},\"P-4\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-5\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-6\":{\"vis\":{\"legendOpen\":false}},\"P-7\":{\"vis\":{\"legendOpen\":false}},\"P-8\":{\"vis\":{\"legendOpen\":false}},\"P-9\":{\"vis\":{\"legendOpen\":false}},\"P-15\":{\"vis\":{\"colors\":{\"Max used\":\"#3F6833\",\"Max avail\":\"#BF1B00\",\"Total\":\"#BF1B00\",\"Used\":\"#508642\",\"Total in GB\":\"#508642\",\"Used in GB\":\"#890F02\"}}}}",
+      "uiStateJSON": "{}",
       "version": 1,
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
       }
     }
   },
   {
-    "_id": "spark-finished-root.default",
-    "_type": "search",
+    "_id": "log-zk",
+    "_type": "dashboard",
     "_source": {
-      "title": "spark-finished-root.default",
-      "description": "",
+      "title": "log-zk",
       "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "_score",
-        "desc"
-      ],
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-zk\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":12,\"size_y\":6,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
       "version": 1,
+      "timeRestore": false,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
       }
     }
   },
   {
-    "_id": "mr-finished-root.default",
-    "_type": "search",
+    "_id": "log-hive",
+    "_type": "dashboard",
     "_source": {
-      "title": "mr-finished-root.default",
-      "description": "",
+      "title": "log-hive",
       "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "_score",
-        "desc"
-      ],
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:MAPREDUCE AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
-      }
-    }
-  },
-  {
-    "_id": "finished-root.default",
-    "_type": "search",
-    "_source": {
-      "title": "finished-root.default",
       "description": "",
-      "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "@timestamp",
-        "desc"
-      ],
+      "panelsJSON": "[{\"id\":\"log-hive-metastore\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hive-server2\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hive-webhcat\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"_source\"],\"sort\":[\"@timestamp\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
       "version": 1,
+      "timeRestore": false,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"queue: root.default AND appState: FINISHED\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
-      }
-    }
-  },
-  {
-    "_id": "spark-finished-root.Engineering.QE",
-    "_type": "search",
-    "_source": {
-      "title": "spark-finished-root.Engineering.QE",
-      "description": "",
-      "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "_score",
-        "desc"
-      ],
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND state=FINISHED AND queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
-      }
-    }
-  },
-  {
-    "_id": "mr-run",
-    "_type": "search",
-    "_source": {
-      "title": "mr-run",
-      "description": "",
-      "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "@timestamp",
-        "desc"
-      ],
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"appType:MAPREDUCE AND appState:RUNNING\"}}}"
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
       }
     }
   },
@@ -239,10 +139,10 @@
     }
   },
   {
-    "_id": "finished-root.Engineering.QE",
+    "_id": "queue-root.default",
     "_type": "search",
     "_source": {
-      "title": "finished-root.Engineering.QE",
+      "title": "queue-root.default",
       "description": "",
       "hits": 0,
       "columns": [
@@ -254,35 +154,15 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"queue: root.Engineering.QE AND appState: FINISHED\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
   {
-    "_id": "spark-run",
+    "_id": "spark-finished-root.default",
     "_type": "search",
     "_source": {
-      "title": "spark-run",
-      "description": "",
-      "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "@timestamp",
-        "desc"
-      ],
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:RUNNING\",\"analyze_wildcard\":true}}}"
-      }
-    }
-  },
-  {
-    "_id": "mr-finished-root.Engineering.QE",
-    "_type": "search",
-    "_source": {
-      "title": "mr-finished-root.Engineering.QE",
+      "title": "spark-finished-root.default",
       "description": "",
       "hits": 0,
       "columns": [
@@ -294,7 +174,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:MAPREDUCE AND state=FINISHED AND queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -319,30 +199,30 @@
     }
   },
   {
-    "_id": "queue-root.default",
+    "_id": "mr-finished-root.default",
     "_type": "search",
     "_source": {
-      "title": "queue-root.default",
+      "title": "mr-finished-root.default",
       "description": "",
       "hits": 0,
       "columns": [
         "_source"
       ],
       "sort": [
-        "@timestamp",
+        "_score",
         "desc"
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"appType:MAPREDUCE AND appState:FINISHED AND queue: root.default\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
   {
-    "_id": "queue-root.Engineering.QE",
+    "_id": "mr-run",
     "_type": "search",
     "_source": {
-      "title": "queue-root.Engineering.QE",
+      "title": "mr-run",
       "description": "",
       "hits": 0,
       "columns": [
@@ -354,7 +234,27 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"queue: root.Engineering.QE\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"appType:MAPREDUCE AND appState:RUNNING\"}}}"
+      }
+    }
+  },
+  {
+    "_id": "spark-run",
+    "_type": "search",
+    "_source": {
+      "title": "spark-run",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"appType:SPARK AND appState:RUNNING\",\"analyze_wildcard\":true}}}"
       }
     }
   },
@@ -375,6 +275,336 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"(NOT queue: None) AND (NOT appId:None)\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "finished-root.default",
+    "_type": "search",
+    "_source": {
+      "title": "finished-root.default",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"queue: root.default AND appState: FINISHED\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hdfs-secondarynamenode",
+    "_type": "search",
+    "_source": {
+      "title": "log-hdfs-secondarynamenode",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.secondarynamenode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hdfs-namenode",
+    "_type": "search",
+    "_source": {
+      "title": "log-hdfs-namenode",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.namenode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hdfs-datanode",
+    "_type": "search",
+    "_source": {
+      "title": "log-hdfs-datanode",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.datanode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase-regionserver",
+    "_type": "search",
+    "_source": {
+      "title": "log-hbase-regionserver",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hbase-log\",\"query\":{\"query_string\":{\"query\":\"type:hbase.regionserver\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-yarn-resourcemanager",
+    "_type": "search",
+    "_source": {
+      "title": "log-yarn-resourcemanager",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-log\",\"query\":{\"query_string\":{\"query\":\"type:yarn.resourcemanager\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-yarn-timelineserver",
+    "_type": "search",
+    "_source": {
+      "title": "log-yarn-timelineserver",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-log\",\"query\":{\"query_string\":{\"query\":\"type:yarn.timelineserver\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase-phoenix",
+    "_type": "search",
+    "_source": {
+      "title": "log-hbase-phoenix",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hbase-log\",\"query\":{\"query_string\":{\"query\":\"type:hbase.phoenix\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-yarn-nodemanager",
+    "_type": "search",
+    "_source": {
+      "title": "log-yarn-nodemanager",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-yarn-log\",\"query\":{\"query_string\":{\"query\":\"type:yarn.nodemanager\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase-master",
+    "_type": "search",
+    "_source": {
+      "title": "log-hbase-master",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hbase-log\",\"query\":{\"query_string\":{\"query\":\"type:hbase.master\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-zk",
+    "_type": "search",
+    "_source": {
+      "title": "log-zk",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-zookeeper-log\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hive-server2",
+    "_type": "search",
+    "_source": {
+      "title": "log-hive-server2",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hive-log\",\"query\":{\"query_string\":{\"query\":\"type: hive.server2\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hive-metastore",
+    "_type": "search",
+    "_source": {
+      "title": "log-hive-metastore",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "timestamp",
+        "loglevel",
+        "host",
+        "content"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hive-log\",\"query\":{\"query_string\":{\"query\":\"type: hive.metastore\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "log-hive-webhcat",
+    "_type": "search",
+    "_source": {
+      "title": "log-hive-webhcat",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-hive-log\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"type: hive.webhcat\"}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "Disk-Utilization",
+    "_type": "visualization",
+    "_source": {
+      "title": "Disk Utilization",
+      "visState": "{\"title\":\"Disk Utilization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Disk Utiliation\"}},{\"id\":\"3\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"total\",\"customLabel\":\"Total in GB\"}},{\"id\":\"4\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"used\",\"customLabel\":\"Used in GB\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Max used\":\"#3F6833\",\"Max avail\":\"#BF1B00\",\"Total\":\"#BF1B00\",\"Used\":\"#508642\",\"Total in GB\":\"#508642\"},\"legendOpen\":true},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-disk\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -635,7 +865,7 @@
     "_type": "visualization",
     "_source": {
       "title": "Jobs Statistics by root.default",
-      "visState": "{\"title\":\"Jobs Statistics by root.default\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"finishedDate\",\"size\":100,\"order\":\"asc\",\"orderBy\":\"_term\",\"customLabel\":\"Application final status of tenant root.default\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"Jobs Statistics by root.default\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"finishedHour\",\"size\":100,\"order\":\"asc\",\"orderBy\":\"_term\",\"customLabel\":\"Application final status of tenant root.default\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"succeeded\": \"#52D017\",\n      \"undefined\": \"#FDD017\",\n      \"failed\": \"#FF0000\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "finished-root.default",
@@ -762,20 +992,6 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "Disk-Utilization",
-    "_type": "visualization",
-    "_source": {
-      "title": "Disk Utilization",
-      "visState": "{\"title\":\"Disk Utilization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Disk Utiliation\"}},{\"id\":\"3\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"total\",\"customLabel\":\"Total in GB\"}},{\"id\":\"4\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"used\",\"customLabel\":\"Used in GB\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"Max used\":\"#3F6833\",\"Max avail\":\"#BF1B00\",\"Total\":\"#BF1B00\",\"Used\":\"#508642\",\"Total in GB\":\"#508642\"},\"legendOpen\":true},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-disk\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   }
