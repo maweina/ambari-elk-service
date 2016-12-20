@@ -618,7 +618,7 @@
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"NOT finalStatus:UNDEFINED\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -865,8 +865,8 @@
     "_type": "visualization",
     "_source": {
       "title": "Jobs Statistics by root.default",
-      "visState": "{\"title\":\"Jobs Statistics by root.default\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"finishedHour\",\"size\":100,\"order\":\"asc\",\"orderBy\":\"_term\",\"customLabel\":\"Application final status of tenant root.default\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"succeeded\": \"#52D017\",\n      \"undefined\": \"#FDD017\",\n      \"failed\": \"#FF0000\"\n    }\n  }\n}",
+      "visState": "{\"title\":\"Jobs Statistics by root.default\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"finishedTime\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"succeeded\":\"#52D017\",\"undefined\":\"#FDD017\",\"failed\":\"#FF0000\"}},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
       "description": "",
       "savedSearchId": "finished-root.default",
       "version": 1,
