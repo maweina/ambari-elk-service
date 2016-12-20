@@ -20,10 +20,27 @@ limitations under the License.
 from resource_management import *
 import sys
 from copy import deepcopy
-
+import requests
+def parse_queue(queueList, parent):
+    global queueNames
+    queueNames=[]
+    for queue in queueList:
+        name = queue['queueName']
+        path = parent + '.' + name
+        if 'queues' in queue and 'queue' in queue['queues']:
+            parse_queue(queue['queues']['queue'], path)
+        else:
+            queueNames.append(path)
+def yarn_scheduler(params):
+    r = requests.get('http://'+params.rm_host+':'+params.rm_port+'/ws/v1/cluster/scheduler')
+    output = r.json()
+    rootQueue = output['scheduler']['schedulerInfo']['queueName']
+    if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
+        queues = output['scheduler']['schedulerInfo']['queues']['queue']
+        parse_queue(queues, rootQueue)
+    return queueNames
 def kibana(role=None):
-    import params
-    
+    import params    
     directories = [params.kibana_home,
                    params.kibana_log_dir, 
                    params.kibana_conf_dir]
@@ -54,4 +71,17 @@ def kibana(role=None):
        owner=params.kibana_user,
        group=params.kibana_user_group,
        mode=0755
+    )
+    queueNames = yarn_scheduler(params)
+    File(format("{kibana_home}/graphs.json"),
+          content=Template(format("graphs.json.j2"),[],queueNames=queueNames),
+          owner=params.kibana_user,
+          group=params.kibana_user_group,
+          mode=0755
+    )
+    File(format("{kibana_home}/graphs-search.json"),
+          content=Template(format("graphs-search.json.j2"),[],queueNames=queueNames),
+          owner=params.kibana_user,
+          group=params.kibana_user_group,
+          mode=0755
     )
