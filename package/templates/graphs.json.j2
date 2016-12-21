@@ -1,0 +1,525 @@
+[
+  {
+    "_id": "cluster",
+    "_type": "dashboard",
+    "_source": {
+      "title": "cluster",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utiliaziton-by-Workload-Type\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utiliaziton-by-Workload-Type\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-CPU-Consuming-MapReduce-Jobs\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-CPU-Consuming-Spark-Jobs\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Memory-Consuming-Mapreduce-Jobs\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Memory-Consuming-Spark-Jobs\",\"panelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Mapreduce-Jobs\",\"panelIndex\":7,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Spark-Jobs\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Running-Mapreduce-Jobs\",\"panelIndex\":9,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Running-Spark-Jobs\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-Mapreduce-Jobs\",\"panelIndex\":11,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Jobs-Statistics-by-Queues\",\"panelIndex\":14,\"row\":25,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Disk-Utilization\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":25}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{\"P-10\":{\"vis\":{\"legendOpen\":false}},\"P-3\":{\"vis\":{\"legendOpen\":false}},\"P-4\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-5\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-6\":{\"vis\":{\"legendOpen\":false}},\"P-7\":{\"vis\":{\"legendOpen\":false}},\"P-8\":{\"vis\":{\"legendOpen\":false}},\"P-9\":{\"vis\":{\"legendOpen\":false}}}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-yarn",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-yarn",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-yarn-resourcemanager\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-yarn-timelineserver\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-yarn-nodemanager\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-hdfs",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-hdfs",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-namenode\",\"panelIndex\":1,\"row\":1,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-datanode\",\"panelIndex\":2,\"row\":9,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-secondarynamenode\",\"panelIndex\":3,\"row\":5,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-hbase",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-hbase",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-hbase-master\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-regionserver\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hbase-phoenix\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-zk",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-zk",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-zk\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":12,\"size_y\":6,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "log-hive",
+    "_type": "dashboard",
+    "_source": {
+      "title": "log-hive",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"id\":\"log-hive-metastore\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":1,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hive-server2\",\"type\":\"search\",\"panelIndex\":2,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":5,\"columns\":[\"timestamp\",\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]},{\"id\":\"log-hive-webhcat\",\"type\":\"search\",\"panelIndex\":3,\"size_x\":11,\"size_y\":4,\"col\":1,\"row\":9,\"columns\":[\"_source\"],\"sort\":[\"@timestamp\",\"desc\"]}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "Disk-Utilization",
+    "_type": "visualization",
+    "_source": {
+      "title": "Disk Utilization",
+      "visState": "{\"title\":\"Disk Utilization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"h\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}},{\"id\":\"3\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"total\",\"customLabel\":\"Total in GB\"}},{\"id\":\"4\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"used\",\"customLabel\":\"Used in GB\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Used in GB\":\"#fdd017\",\"Total in GB\":\"#508642\"},\"legendOpen\":true},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-disk\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Jobs-Statistics-by-Queues",
+    "_type": "visualization",
+    "_source": {
+      "title": "Jobs Statistics by Queues",
+      "visState": "{\"title\":\"Jobs Statistics by Queues\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Queues\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"succeeded\": \"#52D017\",\n      \"killed\": \"#FDD017\",\n      \"failed\": \"#FF0000\"\n    }\n  }\n}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-apps\",\"query\":{\"query_string\":{\"query\":\"NOT finalStatus:UNDEFINED\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Memory-Utiliaziton-by-Workload-Type",
+    "_type": "visualization",
+    "_source": {
+      "title": "Memory Utiliaziton by Workload Type",
+      "visState": "{\"title\":\"Memory Utiliaziton by Workload Type\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"others\":\"#2CA02C\",\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "CPU-Utiliaziton-by-Workload-Type",
+    "_type": "visualization",
+    "_source": {
+      "title": "CPU Utiliaziton by Workload Type",
+      "visState": "{\"title\":\"CPU Utiliaziton by Workload Type\",\"type\":\"area\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"interpolate\":\"linear\",\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"smoothLines\":false,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\",\"customLabel\":\"vCores\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"others\":\"#2CA02C\",\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"mylogstash-yarn-running\",\"query\":{\"query_string\":{\"query\":\"NOT ((appId:None AND NOT(queue:None)) OR (appId:Others AND queue:Others))\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Memory-Consuming-Mapreduce-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Memory Consuming Mapreduce Jobs",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Mapreduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#2B65EC\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "mr-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Time-Consuming-Spark-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Time Consuming Spark Jobs",
+      "visState": "{\"title\":\"Top-10 Time Consuming Spark Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Seconds\": \"#FF7F0E\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "spark-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-CPU-Consuming-MapReduce-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 CPU Consuming MapReduce Jobs",
+      "visState": "{\"title\":\"Top-10 CPU Consuming MapReduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vCoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vCoreSeconds\": \"#2B65EC\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "mr-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-CPU-Consuming-Spark-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 CPU Consuming Spark Jobs",
+      "visState": "{\"title\":\"Top-10 CPU Consuming Spark Jobs\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vcoreSeconds\": \"#FF7F0E\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "spark-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Time-Consuming-Running-Mapreduce-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Time Consuming Running Mapreduce Jobs",
+      "visState": "{\"title\":\"Top-10 Time Consuming Running Mapreduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#2B65EC\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "mr-run",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Time-Consuming-Mapreduce-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Time Consuming Mapreduce Jobs",
+      "visState": "{\"title\":\"Top-10 Time Consuming Mapreduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Max elapsedTime\": \"#2B65EC\",\n      \"Seconds\": \"#2B65EC\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "mr-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Time-Consuming-Running-Spark-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Time Consuming Running Spark Jobs",
+      "visState": "{\"title\":\"Top-10 Time Consuming Running Spark Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Seconds\": \"#FF7F0E\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "spark-run",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Memory-Consuming-Spark-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Memory Consuming Spark Jobs",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Spark Jobs\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#FF7F0E\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "spark-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Time-Distribution-of-Spark-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Time Distribution of Spark Jobs",
+      "visState": "{\"title\":\"Time Distribution of Spark Jobs\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [0 TO 29]\",\"analyze_wildcard\":true}}},\"label\":\"< 30 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [30 TO 60]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [61 TO 300]\",\"analyze_wildcard\":true}}},\"label\":\"1 - 5 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [301 TO 900]\",\"analyze_wildcard\":true}}},\"label\":\"5 - 15 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [901 TO 1800]\",\"analyze_wildcard\":true}}},\"label\":\"15 - 30 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [1801 TO 3600]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [3601 TO 10800]\",\"analyze_wildcard\":true}}},\"label\":\"1- 3 hours\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [10801 TO 2592000]\",\"analyze_wildcard\":true}}},\"label\":\"> 3 hours\"}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"< 30 seconds\":\"#164F74\",\"30 - 60 seconds\":\"#073A5B\",\"1 - 5 minutes\":\"#7C198D\",\" - 15 minutes\":\"#296A2D\",\"15 - 30 minutes\":\"#71622C\",\"30 - 60 minutes\":\"#0D8A4A\",\"1 - 3 hours\":\"#8C4D2A\",\"> 3 hours\":\"#7A1414\"}},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "savedSearchId": "spark-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Time-Distribution-of-Mapreduce-Jobs",
+    "_type": "visualization",
+    "_source": {
+      "title": "Time Distribution of Mapreduce Jobs",
+      "visState": "{\"title\":\"Time Distribution of Mapreduce Jobs\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Number of applications\"}},{\"id\":\"2\",\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [0 TO 29]\",\"analyze_wildcard\":true}}},\"label\":\"< 30 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [30 TO 60]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [61 TO 300]\",\"analyze_wildcard\":true}}},\"label\":\"1 - 5 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [301 TO 900]\",\"analyze_wildcard\":true}}},\"label\":\"5 - 15 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [901 TO 1800]\",\"analyze_wildcard\":true}}},\"label\":\"15 - 30 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [1801 TO 3600]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [3601 TO 10800]\",\"analyze_wildcard\":true}}},\"label\":\"1 - 3 hours\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [10801 TO 2592000]\",\"analyze_wildcard\":true}}},\"label\":\"> 3 hours\"}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"< 30 seconds\":\"#164F74\",\"30 - 60 seconds\":\"#073A5B\",\"1 - 5 minutes\":\"#7C198D\",\" - 15 minutes\":\"#296A2D\",\"15 - 30 minutes\":\"#71622C\",\"30 - 60 minutes\":\"#0D8A4A\",\"1 - 3 hours\":\"#8C4D2A\",\"> 3 hours\":\"#7A1414\"}},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "savedSearchId": "mr-finished",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Memory-Utilization-by-Queues",
+    "_type": "visualization",
+    "_source": {
+      "title": "Memory Utilization by Queues",
+      "visState": "{\"title\":\"Memory Utilization by Queues\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"others\":\"#5FFB17\"}}}",
+      "description": "",
+      "savedSearchId": "queues",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "CPU-Utilization-by-Queues",
+    "_type": "visualization",
+    "_source": {
+      "title": "CPU Utilization by Queues",
+      "visState": "{\"title\":\"CPU Utilization by Queues\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"others\":\"#5FFB17\"}}}",
+      "description": "",
+      "savedSearchId": "queues",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+{% for queue in queueNames %}
+  {
+    "_id": "tenant-{{queue}}",
+    "_type": "dashboard",
+    "_source": {
+      "title": "tenant-{{queue}}",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utilization-by-Queues\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utilization-by-Queues\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"CPU-Utilization-by-{{queue}}\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utilization-by-{{queue}}\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-CPU-Consuming-MapReduce-Jobs-by-{{queue}}\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-CPU-Consuming-Spark-Jobs-by-{{queue}}\",\"panelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Memory-Consuming-Mapreduce-Jobs-by-{{queue}}\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Memory-Consuming-Spark-Jobs-by-{{queue}}\",\"panelIndex\":9,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Mapreduce-Jobs-by-{{queue}}\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Spark-Jobs-by-{{queue}}\",\"panelIndex\":11,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-MapReduce-Jobs-by-{{queue}}\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs-by-{{queue}}\",\"panelIndex\":13,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Jobs-Statistics-by-{{queue}}\",\"type\":\"visualization\",\"panelIndex\":14,\"size_x\":6,\"size_y\":5,\"col\":1,\"row\":25}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{\"P-10\":{\"vis\":{\"legendOpen\":false}},\"P-11\":{\"vis\":{\"legendOpen\":false}},\"P-5\":{\"vis\":{\"legendOpen\":false}},\"P-6\":{\"vis\":{\"legendOpen\":false}},\"P-8\":{\"vis\":{\"legendOpen\":false}},\"P-9\":{\"vis\":{\"legendOpen\":false}}}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Memory-Consuming-Spark-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Memory Consuming Spark Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#FF7F0E\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "spark-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Time-Consuming-Spark-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Time Consuming Spark Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Time Consuming Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Seconds\": \"#FF7F0E\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "spark-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-CPU-Consuming-Spark-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 CPU Consuming Spark Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 CPU Consuming Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vcoreSeconds\": \"#FF7F0E\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "spark-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-CPU-Consuming-MapReduce-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 CPU Consuming MapReduce Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 CPU Consuming MapReduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vocreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vocreSeconds\": \"#2B65EC\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "mr-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Memory-Consuming-Mapreduce-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Memory Consuming Mapreduce Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Mapreduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#2B65EC\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "mr-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Top10-Time-Consuming-Mapreduce-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top-10 Time Consuming Mapreduce Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Time Consuming Mapreduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Seconds\": \"#2B65EC\"\n    }\n  }\n}",
+      "description": "",
+      "savedSearchId": "mr-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Jobs-Statistics-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Jobs Statistics by {{queue}}",
+      "visState": "{\"title\":\"Jobs Statistics by {{queue}}\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"finishedTime\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\": \"Time\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"finalStatus\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"succeeded\":\"#52D017\",\"killed\":\"#FDD017\",\"failed\":\"#FF0000\"}},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "savedSearchId": "finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "CPU-Utilization-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "CPU Utilization by {{queue}}",
+      "visState": "{\"title\":\"CPU Utilization by {{queue}}\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\",\"others\":\"#5FFB17\"}}}",
+      "description": "",
+      "savedSearchId": "queue-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Time-Distribution-of-MapReduce-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Time Distribution of MapReduce Jobs by {{queue}}",
+      "visState": "{\"title\":\"Time Distribution of MapReduce Jobs by {{queue}}\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [0 TO 29]\",\"analyze_wildcard\":true}}},\"label\":\"< 30 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [30 TO 60]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [61 TO 300]\",\"analyze_wildcard\":true}}},\"label\":\"1 - 5 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [301 TO 900]\",\"analyze_wildcard\":true}}},\"label\":\"5 - 15 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [901 TO 1800]\",\"analyze_wildcard\":true}}},\"label\":\"15 - 30 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [1801 TO 3600]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [3601 TO 10800]\",\"analyze_wildcard\":true}}},\"label\":\"1 - 3 hours\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [10801 TO 2592000]\",\"analyze_wildcard\":true}}},\"label\":\"> 3 hours\"}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"< 30 seconds\":\"#164F74\",\"30 - 60 seconds\":\"#073A5B\",\"1 - 5 minutes\":\"#7C198D\",\" - 15 minutes\":\"#296A2D\",\"15 - 30 minutes\":\"#71622C\",\"30 - 60 minutes\":\"#0D8A4A\",\"1 - 3 hours\":\"#8C4D2A\",\"> 3 hours\":\"#7A1414\"}},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "savedSearchId": "mr-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Time-Distribution-of-Spark-Jobs-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Time Distribution of Spark Jobs by {{queue}}",
+      "visState": "{\"title\":\"Time Distribution of Spark Jobs by {{queue}}\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [0 TO 29]\",\"analyze_wildcard\":true}}},\"label\":\"< 30 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [30 TO 60]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 seconds\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [61 TO 300]\",\"analyze_wildcard\":true}}},\"label\":\"1 - 5 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [301 TO 900]\",\"analyze_wildcard\":true}}},\"label\":\"5 - 15 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [901 TO 1800]\",\"analyze_wildcard\":true}}},\"label\":\"15 - 30 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [1801 TO 3600]\",\"analyze_wildcard\":true}}},\"label\":\"30 - 60 minutes\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [3601 TO 10800]\",\"analyze_wildcard\":true}}},\"label\":\"1 - 3 hours\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"elapsedTime: [10801 TO 2592000]\",\"analyze_wildcard\":true}}},\"label\":\"> 3 hours\"}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"< 30 seconds\":\"#164F74\",\"30 - 60 seconds\":\"#073A5B\",\"1 - 5 minutes\":\"#7C198D\",\" - 15 minutes\":\"#296A2D\",\"15 - 30 minutes\":\"#71622C\",\"30 - 60 minutes\":\"#0D8A4A\",\"1 - 3 hours\":\"#8C4D2A\",\"> 3 hours\":\"#7A1414\"}},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "savedSearchId": "spark-finished-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Memory-Utilization-by-{{queue}}",
+    "_type": "visualization",
+    "_source": {
+      "title": "Memory Utilization by {{queue}}",
+      "visState": "{\"title\":\"Memory Utilization by {{queue}}\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\",\"others\":\"#5FFB17\"}}}",
+      "description": "",
+      "savedSearchId": "queue-{{queue}}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  }{% if not loop.last %},
+{% endif %}{% endfor %}
+
+]
