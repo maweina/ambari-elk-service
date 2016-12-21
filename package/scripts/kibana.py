@@ -21,9 +21,10 @@ from resource_management import *
 import sys
 from copy import deepcopy
 import requests
+queueNames=[]
+
 def parse_queue(queueList, parent):
     global queueNames
-    queueNames=[]
     for queue in queueList:
         name = queue['queueName']
         path = parent + '.' + name
@@ -31,14 +32,23 @@ def parse_queue(queueList, parent):
             parse_queue(queue['queues']['queue'], path)
         else:
             queueNames.append(path)
+
 def yarn_scheduler(params):
-    r = requests.get('http://'+params.rm_host+':'+params.rm_port+'/ws/v1/cluster/scheduler')
-    output = r.json()
-    rootQueue = output['scheduler']['schedulerInfo']['queueName']
-    if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
-        queues = output['scheduler']['schedulerInfo']['queues']['queue']
-        parse_queue(queues, rootQueue)
-    return queueNames
+    queueNameList=['root.default']
+    try:
+        r = requests.get('http://' + params.rm_host + ':' + params.rm_port + '/ws/v1/cluster/scheduler',timeout=1)
+    except:
+        print "Excpetion: Yarn Rest Api of Scheduler Connection Failed."
+    else:
+        if r.status_code == requests.codes.ok:
+            output = r.json()
+            rootQueue = output['scheduler']['schedulerInfo']['queueName']
+            if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
+                queues = output['scheduler']['schedulerInfo']['queues']['queue']
+                parse_queue(queues, rootQueue)
+                queueNameList = queueNames
+    return queueNameList
+
 def kibana(role=None):
     import params    
     directories = [params.kibana_home,
@@ -72,15 +82,15 @@ def kibana(role=None):
        group=params.kibana_user_group,
        mode=0755
     )
-    queueNames = yarn_scheduler(params)
+    queueNameList = yarn_scheduler(params)
     File(format("{kibana_home}/graphs.json"),
-          content=Template(format("graphs.json.j2"),[],queueNames=queueNames),
+          content=Template(format("graphs.json.j2"),[],queueNames=queueNameList),
           owner=params.kibana_user,
           group=params.kibana_user_group,
           mode=0755
     )
     File(format("{kibana_home}/graphs-search.json"),
-          content=Template(format("graphs-search.json.j2"),[],queueNames=queueNames),
+          content=Template(format("graphs-search.json.j2"),[],queueNames=queueNameList),
           owner=params.kibana_user,
           group=params.kibana_user_group,
           mode=0755
