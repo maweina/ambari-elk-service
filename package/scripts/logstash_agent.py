@@ -47,13 +47,8 @@ class LogstashAgent(Script):
     env.set_params(params)
     if os.path.isfile(params.logstash_pid_file):
       pid = int(file(params.logstash_pid_file,'r').readlines()[0])
-      try:
-        os.kill(pid, signal.SIGKILL)
-      except:
-        pass
-      File(params.logstash_pid_file,
-          action = "delete"
-      )
+      os.kill(pid, signal.SIGKILL)
+      File(params.logstash_pid_file, action = "delete")
 
   def status(self, env):
     import params
