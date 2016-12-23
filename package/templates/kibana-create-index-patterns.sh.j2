@@ -25,3 +25,6 @@ curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/mylo
 
 # mylogstash-yarn-running
 curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/mylogstash-yarn-running -d '{"title" : "mylogstash-yarn-running",  "timeFieldName": "logdate"}'
+
+# set default index
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/config/4.5.4 -d '{"defaultIndex" : "logstash-disk"}'
