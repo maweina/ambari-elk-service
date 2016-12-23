@@ -17,8 +17,8 @@
         <component>
           <name>LOGSTASH_AGENT</name>
           <displayName>Logstash Agent</displayName>
-          <category>SLAVE</category>
-          <cardinality>ALL</cardinality>
+          <category>MASTER</category>
+          <cardinality>1+</cardinality>
           <versionAdvertised>true</versionAdvertised>
           <commandScript>
             <script>scripts/logstash_agent.py</script>
@@ -29,7 +29,7 @@
         <component>
           <name>ELASTIC_DATANODE</name>
           <displayName>Elastic Datanode</displayName>
-          <category>MASTER</category>
+          <category>SLAVE</category>
           <cardinality>1+</cardinality>
           <versionAdvertised>true</versionAdvertised>
           <commandScript>
