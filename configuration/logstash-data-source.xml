@@ -71,7 +71,7 @@ output {
         template_name => "logstash-yarn-running"
       }
     }
-    if [appType] != "FREE" {
+    if [appType] != "OTHERS" {
       elasticsearch {
         hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
         index => "mylogstash-yarn-apps"

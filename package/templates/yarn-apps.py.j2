@@ -77,10 +77,8 @@ def yarn_apps():
             elapsedTime = long(app['elapsedTime'])/1000
             finishedTime = long(app['finishedTime'])/1000
             if finishedTime > 0:
-                finishedDate = datetime.datetime.fromtimestamp(finishedTime).strftime('%Y%m%d')
                 selfFinishedTime = datetime.datetime.fromtimestamp(finishedTime).isoformat()
             else:
-                finishedDate = "None"
                 # if the job is running set the time to current time
                 selfFinishedTime = datetime.datetime.fromtimestamp(int(time.time())).isoformat()
             
@@ -95,7 +93,7 @@ def yarn_apps():
                     value['memoryFree'] = value['memoryFree'] - memory
                     break
             
-            print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s" % (selfTimestamp, id, type, state, finalStatus, queue, user, vcores, memory, vcoreCapacity, memoryCapacity, vcoreSeconds, memorySeconds, elapsedTime, finishedDate, selfFinishedTime)
+            print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s" % (selfTimestamp, id, type, state, finalStatus, queue, user, vcores, memory, vcoreCapacity, memoryCapacity, vcoreSeconds, memorySeconds, elapsedTime, selfFinishedTime)
             vcoreUsed = vcoreUsed + vcores
             memoryUsed = memoryUsed + memory
             
@@ -104,7 +102,7 @@ def yarn_apps():
             value['vcoreFree'] = 0;
         if value['memoryFree'] < 0:
             value['memoryFree'] = 0;
-        print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s" % (selfTimestamp, "None", "OTHERS", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0, finishedDate, selfFinishedTime)
+        print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s" % (selfTimestamp, "None", "OTHERS", "RUNNING", "UNDEFINED", key, "None", value['vcoreFree'], value['memoryFree'], value['vcore'], value['memory'], 0, 0, 0, selfFinishedTime)
 
     vcorFree = vcoreTotal - vcoreUsed
     if vcorFree < 0:
@@ -112,8 +110,8 @@ def yarn_apps():
     memoryFree = memoryTotal - memoryUsed
     if memoryFree < 0:
         memoryFree = 0
-    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s" % (selfTimestamp, "None", "OTHERS", "RUNNING", "UNDEFINED", "None", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime)
-    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s %s" % (selfTimestamp, "Others", "OTHERS", "RUNNING", "UNDEFINED", "Others", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, finishedDate, selfFinishedTime)
+    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s" % (selfTimestamp, "None", "OTHERS", "RUNNING", "UNDEFINED", "None", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, selfFinishedTime)
+    print "%s %s %s %s %s %s %s %d %d %d %d %d %d %d %s" % (selfTimestamp, "Others", "OTHERS", "RUNNING", "UNDEFINED", "Others", "None", vcorFree, memoryFree, vcoreTotal, memoryTotal, 0, 0, 0, selfFinishedTime)
 
 if __name__ == "__main__":
     yarn_metics()
