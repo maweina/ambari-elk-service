@@ -95,3 +95,9 @@ def kibana(role=None):
           group=params.kibana_user_group,
           mode=0755
     )
+    File(format("{kibana_home}/kibana-create-index-patterns.sh"),
+         content=Template(format("kibana-create-index-patterns.sh.j2")),
+         owner=params.kibana_user,
+         group=params.kibana_user_group,
+         mode=0755
+         )

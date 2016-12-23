@@ -10,7 +10,7 @@
         "enabled": true,
         "source": {
           "type": "SCRIPT",
-          "path": "HDP/2.4/services/ELK/package/scripts/alerts/alert_mapred_long_job.py"
+          "path": "HDP/2.5/services/OCCI/package/scripts/alerts/alert_mapred_long_job.py"
         }
       }
     ]

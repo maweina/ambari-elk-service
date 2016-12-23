@@ -8,7 +8,7 @@
 
     "links": [
       {
-        "name": "ELK",
+        "name": "OCCI",
         "label": "Kibana UI",
         "requires_user_name": "false",
         "component_name": "KIBANA_SERVER",

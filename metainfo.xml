@@ -3,7 +3,7 @@
   <schemaVersion>2.0</schemaVersion>
   <services>
     <service>
-      <name>ELK</name>
+      <name>OCCI</name>
       <displayName>OCCI</displayName>
       <comment>Log Analysis with the ELK stack (Elasticsearch, Logstash, Kibana)</comment>
       <version>0.1.0</version>
@@ -18,7 +18,7 @@
           <name>LOGSTASH_AGENT</name>
           <displayName>Logstash Agent</displayName>
           <category>SLAVE</category>
-          <cardinality>0+</cardinality>
+          <cardinality>ALL</cardinality>
           <versionAdvertised>true</versionAdvertised>
           <commandScript>
             <script>scripts/logstash_agent.py</script>
@@ -60,11 +60,9 @@
             </package>
             <package>
               <name>elasticsearch</name>
-              <condition>should_install_es</condition>
             </package>
             <package>
               <name>kibana</name>
-              <condition>should_install_kibana</condition>
             </package>
             <package>
               <name>python-requests</name>
