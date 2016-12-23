@@ -9,7 +9,7 @@
     "links": [
       {
         "name": "OCCI",
-        "label": "Kibana UI",
+        "label": "OCCI UI",
         "requires_user_name": "false",
         "component_name": "KIBANA_SERVER",
         "url":"%@://%@:%@/app/kibana#/dashboard/cluster",
