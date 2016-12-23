@@ -135,7 +135,7 @@
     "_source": {
       "title": "Memory Utiliaziton by Workload Type",
       "visState": "{\"title\":\"Memory Utiliaziton by Workload Type\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"others\":\"#2CA02C\",\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\"}}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"others\":\"#D3D3D3\",\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\"}}}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
@@ -149,7 +149,7 @@
     "_source": {
       "title": "CPU Utiliaziton by Workload Type",
       "visState": "{\"title\":\"CPU Utiliaziton by Workload Type\",\"type\":\"area\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"interpolate\":\"linear\",\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"smoothLines\":false,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\",\"customLabel\":\"vCores\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"others\":\"#2CA02C\",\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\"}}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"colors\":{\"others\":\"#D3D3D3\",\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\"}}}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
@@ -313,7 +313,7 @@
     "_source": {
       "title": "Memory Utilization by Queues",
       "visState": "{\"title\":\"Memory Utilization by Queues\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"others\":\"#5FFB17\"}}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"others\":\"#D3D3D3\"}}}",
       "description": "",
       "savedSearchId": "queues",
       "version": 1,
@@ -328,7 +328,7 @@
     "_source": {
       "title": "CPU Utilization by Queues",
       "visState": "{\"title\":\"CPU Utilization by Queues\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"queue\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"others\":\"#5FFB17\"}}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"others\":\"#D3D3D3\"}}}",
       "description": "",
       "savedSearchId": "queues",
       "version": 1,
@@ -494,7 +494,7 @@
     "_source": {
       "title": "CPU Utilization by {{queue}}",
       "visState": "{\"title\":\"CPU Utilization by {{queue}}\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"vCores\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\",\"others\":\"#5FFB17\"}}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\",\"others\":\"#D3D3D3\"}}}",
       "description": "",
       "savedSearchId": "queue-{{queue}}",
       "version": 1,
@@ -539,7 +539,7 @@
     "_source": {
       "title": "Memory Utilization by {{queue}}",
       "visState": "{\"title\":\"Memory Utilization by {{queue}}\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"memory\",\"customLabel\":\"Memory in MB\"}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"mapreduce\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"spark\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"others\",\"analyze_wildcard\":true}}}}]}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"logdate\",\"interval\":\"m\",\"customInterval\":\"60s\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\",\"others\":\"#5FFB17\"}}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"spark\":\"#FF7F0E\",\"mapreduce\":\"#2B65EC\",\"others\":\"#D3D3D3\"}}}",
       "description": "",
       "savedSearchId": "queue-{{queue}}",
       "version": 1,
