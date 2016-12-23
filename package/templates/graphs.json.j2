@@ -6,7 +6,7 @@
       "title": "cluster",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utiliaziton-by-Workload-Type\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utiliaziton-by-Workload-Type\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-CPU-Consuming-MapReduce-Jobs\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-CPU-Consuming-Spark-Jobs\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Memory-Consuming-Mapreduce-Jobs\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Memory-Consuming-Spark-Jobs\",\"panelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Mapreduce-Jobs\",\"panelIndex\":7,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Spark-Jobs\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Running-Mapreduce-Jobs\",\"panelIndex\":9,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Running-Spark-Jobs\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-Mapreduce-Jobs\",\"panelIndex\":11,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Jobs-Statistics-by-Queues\",\"panelIndex\":14,\"row\":25,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Disk-Utilization\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":25}]",
+      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utiliaziton-by-Workload-Type\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utiliaziton-by-Workload-Type\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-CPU-Consuming-Finished-MapReduce-Jobs\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-CPU-Consuming-Finished-Spark-Jobs\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"10-Memory-Consuming-Finished-Mapreduce-Jobs\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Memory-Consuming-Finished-Spark-Jobs\",\"panTopelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Finished-Mapreduce-Jobs\",\"panelIndex\":7,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Finished-Spark-Jobs\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Running-Mapreduce-Jobs\",\"panelIndex\":9,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Running-Spark-Jobs\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-Mapreduce-Jobs\",\"panelIndex\":11,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Jobs-Statistics-by-Queues\",\"panelIndex\":14,\"row\":25,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Disk-Utilization\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":25}]",
       "optionsJSON": "{\"darkTheme\":true}",
       "uiStateJSON": "{\"P-10\":{\"vis\":{\"legendOpen\":false}},\"P-3\":{\"vis\":{\"legendOpen\":false}},\"P-4\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-5\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-6\":{\"vis\":{\"legendOpen\":false}},\"P-7\":{\"vis\":{\"legendOpen\":false}},\"P-8\":{\"vis\":{\"legendOpen\":false}},\"P-9\":{\"vis\":{\"legendOpen\":false}}}",
       "version": 1,
@@ -158,11 +158,11 @@
     }
   },
   {
-    "_id": "Top10-Memory-Consuming-Mapreduce-Jobs",
+    "_id": "Top10-Memory-Consuming-Finished-Mapreduce-Jobs",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Memory Consuming Mapreduce Jobs",
-      "visState": "{\"title\":\"Top-10 Memory Consuming Mapreduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Memory Consuming Finished Mapreduce Jobs",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Finished Mapreduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#2B65EC\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "mr-finished",
@@ -173,11 +173,11 @@
     }
   },
   {
-    "_id": "Top10-Time-Consuming-Spark-Jobs",
+    "_id": "Top10-Time-Consuming-Finished-Spark-Jobs",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Time Consuming Spark Jobs",
-      "visState": "{\"title\":\"Top-10 Time Consuming Spark Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Time Consuming Finished Spark Jobs",
+      "visState": "{\"title\":\"Top-10 Time Consuming Finished Spark Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Seconds\": \"#FF7F0E\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "spark-finished",
@@ -188,11 +188,11 @@
     }
   },
   {
-    "_id": "Top10-CPU-Consuming-MapReduce-Jobs",
+    "_id": "Top10-CPU-Consuming-Finished-MapReduce-Jobs",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 CPU Consuming MapReduce Jobs",
-      "visState": "{\"title\":\"Top-10 CPU Consuming MapReduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vCoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 CPU Consuming Finished MapReduce Jobs",
+      "visState": "{\"title\":\"Top-10 CPU Consuming Finished MapReduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vCoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vCoreSeconds\": \"#2B65EC\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "mr-finished",
@@ -203,11 +203,11 @@
     }
   },
   {
-    "_id": "Top10-CPU-Consuming-Spark-Jobs",
+    "_id": "Top10-CPU-Consuming-Finished-Spark-Jobs",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 CPU Consuming Spark Jobs",
-      "visState": "{\"title\":\"Top-10 CPU Consuming Spark Jobs\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 CPU Consuming Finished Spark Jobs",
+      "visState": "{\"title\":\"Top-10 CPU Consuming Finished Spark Jobs\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vcoreSeconds\": \"#FF7F0E\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "spark-finished",
@@ -233,11 +233,11 @@
     }
   },
   {
-    "_id": "Top10-Time-Consuming-Mapreduce-Jobs",
+    "_id": "Top10-Time-Consuming-Finished-Mapreduce-Jobs",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Time Consuming Mapreduce Jobs",
-      "visState": "{\"title\":\"Top-10 Time Consuming Mapreduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Time Consuming Finished Mapreduce Jobs",
+      "visState": "{\"title\":\"Top-10 Time Consuming Finished Mapreduce Jobs\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Max elapsedTime\": \"#2B65EC\",\n      \"Seconds\": \"#2B65EC\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "mr-finished",
@@ -263,11 +263,11 @@
     }
   },
   {
-    "_id": "Top10-Memory-Consuming-Spark-Jobs",
+    "_id": "Top10-Memory-Consuming-Finished-Spark-Jobs",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Memory Consuming Spark Jobs",
-      "visState": "{\"title\":\"Top-10 Memory Consuming Spark Jobs\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Memory Consuming Finished Spark Jobs",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Finished Spark Jobs\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#FF7F0E\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "spark-finished",
@@ -345,7 +345,7 @@
       "title": "tenant-{{queue}}",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utilization-by-Queues\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utilization-by-Queues\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"CPU-Utilization-by-{{queue}}\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utilization-by-{{queue}}\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-CPU-Consuming-MapReduce-Jobs-by-{{queue}}\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-CPU-Consuming-Spark-Jobs-by-{{queue}}\",\"panelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Memory-Consuming-Mapreduce-Jobs-by-{{queue}}\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Memory-Consuming-Spark-Jobs-by-{{queue}}\",\"panelIndex\":9,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Mapreduce-Jobs-by-{{queue}}\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Spark-Jobs-by-{{queue}}\",\"panelIndex\":11,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-MapReduce-Jobs-by-{{queue}}\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs-by-{{queue}}\",\"panelIndex\":13,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Jobs-Statistics-by-{{queue}}\",\"type\":\"visualization\",\"panelIndex\":14,\"size_x\":6,\"size_y\":5,\"col\":1,\"row\":25},{\"id\":\"Top10-Time-Consuming-Running-Mapreduce-Jobs-by-{{queue}}\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":21},{\"id\":\"Top10-Time-Consuming-Running-Spark-Jobs-by-{{queue}}\",\"type\":\"visualization\",\"panelIndex\":16,\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":21}]",
+      "panelsJSON": "[{\"col\":1,\"id\":\"CPU-Utilization-by-Queues\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utilization-by-Queues\",\"panelIndex\":2,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"CPU-Utilization-by-{{queue}}\",\"panelIndex\":3,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Memory-Utilization-by-{{queue}}\",\"panelIndex\":4,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-CPU-Consuming-Finished-MapReduce-Jobs-by-{{queue}}\",\"panelIndex\":5,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-CPU-Consuming-Finished-Spark-Jobs-by-{{queue}}\",\"panelIndex\":6,\"row\":9,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Memory-Consuming-Finished-Mapreduce-Jobs-by-{{queue}}\",\"panelIndex\":8,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Memory-Consuming-Finished-Spark-Jobs-by-{{queue}}\",\"panelIndex\":9,\"row\":13,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Top10-Time-Consuming-Finished-Mapreduce-Jobs-by-{{queue}}\",\"panelIndex\":10,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Top10-Time-Consuming-Finished-Spark-Jobs-by-{{queue}}\",\"panelIndex\":11,\"row\":17,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Time-Distribution-of-MapReduce-Jobs-by-{{queue}}\",\"panelIndex\":12,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Time-Distribution-of-Spark-Jobs-by-{{queue}}\",\"panelIndex\":13,\"row\":21,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Jobs-Statistics-by-{{queue}}\",\"type\":\"visualization\",\"panelIndex\":14,\"size_x\":6,\"size_y\":5,\"col\":1,\"row\":25},{\"id\":\"Top10-Time-Consuming-Running-Mapreduce-Jobs-by-{{queue}}\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":21},{\"id\":\"Top10-Time-Consuming-Running-Spark-Jobs-by-{{queue}}\",\"type\":\"visualization\",\"panelIndex\":16,\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":21}]",
       "optionsJSON": "{\"darkTheme\":true}",
       "uiStateJSON": "{\"P-10\":{\"vis\":{\"legendOpen\":false}},\"P-11\":{\"vis\":{\"legendOpen\":false}},\"P-5\":{\"vis\":{\"legendOpen\":false}},\"P-6\":{\"vis\":{\"legendOpen\":false}},\"P-8\":{\"vis\":{\"legendOpen\":false}},\"P-9\":{\"vis\":{\"legendOpen\":false}}}",
       "version": 1,
@@ -356,11 +356,11 @@
     }
   },
   {
-    "_id": "Top10-Memory-Consuming-Spark-Jobs-by-{{queue}}",
+    "_id": "Top10-Memory-Consuming-Finished-Spark-Jobs-by-{{queue}}",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Memory Consuming Spark Jobs by {{queue}}",
-      "visState": "{\"title\":\"Top-10 Memory Consuming Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Memory Consuming Finished Spark Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Finished Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#FF7F0E\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "spark-finished-{{queue}}",
@@ -371,11 +371,11 @@
     }
   },
   {
-    "_id": "Top10-Time-Consuming-Spark-Jobs-by-{{queue}}",
+    "_id": "Top10-Time-Consuming-Finished-Spark-Jobs-by-{{queue}}",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Time Consuming Spark Jobs by {{queue}}",
-      "visState": "{\"title\":\"Top-10 Time Consuming Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Time Consuming Finished Spark Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Time Consuming Finished Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Seconds\": \"#FF7F0E\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "spark-finished-{{queue}}",
@@ -386,11 +386,11 @@
     }
   },
   {
-    "_id": "Top10-CPU-Consuming-Spark-Jobs-by-{{queue}}",
+    "_id": "Top10-CPU-Consuming-Finished-Spark-Jobs-by-{{queue}}",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 CPU Consuming Spark Jobs by {{queue}}",
-      "visState": "{\"title\":\"Top-10 CPU Consuming Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 CPU Consuming Finished Spark Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 CPU Consuming Finished Spark Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vcoreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vcoreSeconds\": \"#FF7F0E\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "spark-finished-{{queue}}",
@@ -401,11 +401,11 @@
     }
   },
   {
-    "_id": "Top10-CPU-Consuming-MapReduce-Jobs-by-{{queue}}",
+    "_id": "Top10-CPU-Consuming-Finished-MapReduce-Jobs-by-{{queue}}",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 CPU Consuming MapReduce Jobs by {{queue}}",
-      "visState": "{\"title\":\"Top-10 CPU Consuming MapReduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vocreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 CPU Consuming Finished MapReduce Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 CPU Consuming Finished MapReduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"vcoreSeconds\",\"customLabel\":\"vocreSeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"vocreSeconds\": \"#2B65EC\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "mr-finished-{{queue}}",
@@ -416,11 +416,11 @@
     }
   },
   {
-    "_id": "Top10-Memory-Consuming-Mapreduce-Jobs-by-{{queue}}",
+    "_id": "Top10-Memory-Consuming-Finished-Mapreduce-Jobs-by-{{queue}}",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Memory Consuming Mapreduce Jobs by {{queue}}",
-      "visState": "{\"title\":\"Top-10 Memory Consuming Mapreduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Memory Consuming Finished Mapreduce Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Memory Consuming Finished Mapreduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"memorySeconds\",\"customLabel\":\"memorySeconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"memorySeconds\": \"#2B65EC\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "mr-finished-{{queue}}",
@@ -431,11 +431,11 @@
     }
   },
   {
-    "_id": "Top10-Time-Consuming-Mapreduce-Jobs-by-{{queue}}",
+    "_id": "Top10-Time-Consuming-Finished-Mapreduce-Jobs-by-{{queue}}",
     "_type": "visualization",
     "_source": {
-      "title": "Top-10 Time Consuming Mapreduce Jobs by {{queue}}",
-      "visState": "{\"title\":\"Top-10 Time Consuming Mapreduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
+      "title": "Top-10 Time Consuming Finished Mapreduce Jobs by {{queue}}",
+      "visState": "{\"title\":\"Top-10 Time Consuming Finished Mapreduce Jobs by {{queue}}\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"elapsedTime\",\"customLabel\":\"Seconds\"}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appId\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Application ID\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"colors\": {\n      \"Seconds\": \"#2B65EC\"\n    }\n  }\n}",
       "description": "",
       "savedSearchId": "mr-finished-{{queue}}",
