@@ -1,4 +1,3 @@
-
 {% raw %}
 {
   "template": "logstash-*-log",
@@ -7,7 +6,13 @@
       "_ttl": {
         "enabled": true,
         "default": "3d"
-      }
+      },
+      "properties" : {
+          "timestamp" : {
+              "type" : "date",
+              "format" : "yyyy-MM-dd HH:mm:ss,SSS||yyyy-MM-dd HH:mm:ss.SSS||strict_date_optional_time||epoch_millis"
+          }
+       }
     }
   }
 }

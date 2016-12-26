@@ -6,19 +6,19 @@
 curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-disk -d '{"title" : "logstash-disk",  "timeFieldName": "@timestamp"}'
 
 # logstash-hbase-log
-curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-hbase-log -d '{"title" : "logstash-hbase-log",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-hbase-log -d '{"title" : "logstash-hbase-log",  "timeFieldName": "timestamp"}'
 
 # logstash-hdfs-log
-curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-hdfs-log -d '{"title" : "logstash-hdfs-log",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-hdfs-log -d '{"title" : "logstash-hdfs-log",  "timeFieldName": "timestamp"}'
 
 # logstash-hive-log
-curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-hive-log -d '{"title" : "logstash-hive-log",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-hive-log -d '{"title" : "logstash-hive-log",  "timeFieldName": "timestamp"}'
 
 # logstash-yarn-log
-curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-yarn-log -d '{"title" : "logstash-yarn-log",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-yarn-log -d '{"title" : "logstash-yarn-log",  "timeFieldName": "timestamp"}'
 
 # logstash-zookeeper-log
-curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-zookeeper-log -d '{"title" : "logstash-zookeeper-log",  "timeFieldName": "@timestamp"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/logstash-zookeeper-log -d '{"title" : "logstash-zookeeper-log",  "timeFieldName": "timestamp"}'
 
 # mylogstash-yarn-apps
 curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/mylogstash-yarn-apps -d '{"title" : "mylogstash-yarn-apps",  "timeFieldName": "finishedTime"}'
