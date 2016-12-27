@@ -18,9 +18,8 @@ limitations under the License.
 
 """
 from resource_management import *
-import sys
-from copy import deepcopy
-import requests
+import json
+import urllib3
 queueNames=[]
 
 def parse_queue(queueList, parent):
@@ -36,12 +35,13 @@ def parse_queue(queueList, parent):
 def yarn_scheduler(params):
     queueNameList=['root.default']
     try:
-        r = requests.get('http://' + params.rm_host + ':' + params.rm_port + '/ws/v1/cluster/scheduler',timeout=1)
+        http = urllib3.PoolManager()
+        r = http.request('GET', 'http://' + params.rm_host + ':' + params.rm_port + '/ws/v1/cluster/scheduler', timeout=5.0)
     except:
         print "Excpetion: Yarn Rest Api of Scheduler Connection Failed."
     else:
-        if r.status_code == requests.codes.ok:
-            output = r.json()
+        if r.status == 200:
+            output = json.loads(r.data.decode('utf-8'))
             rootQueue = output['scheduler']['schedulerInfo']['queueName']
             if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
                 queues = output['scheduler']['schedulerInfo']['queues']['queue']
