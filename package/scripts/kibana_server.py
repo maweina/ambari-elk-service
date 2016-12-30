@@ -20,12 +20,14 @@ limitations under the License.
 
 from resource_management import *
 from kibana import kibana
-
+import sys
 class KibanaMaster(Script):
   def install(self, env):
     import params
     env.set_params(params)
     self.install_packages(env)
+    reload(sys)                         
+    sys.setdefaultencoding('utf-8')  
     File(format("{kibana_home}/optimize/bundles/src/ui/public/images/kibana.svg"),
          content=Template(format("kibana.svg")),
          owner=params.kibana_user,
