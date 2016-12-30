@@ -4,13 +4,33 @@
       {
         "name": "mapred_job",
         "label": "MapReduce Job Execution Time",
-        "description": "This alert is triggered if the execution time of finished MapReduce Job is greater than 100 seconds.",
+        "description": "This alert is triggered if the execution time of finished MapReduce Job is greater than the specified threshold.",
         "interval": 1,
         "scope": "HOST",
         "enabled": true,
         "source": {
           "type": "SCRIPT",
-          "path": "HDP/2.5/services/OCCI/package/scripts/alerts/alert_mapred_long_job.py"
+          "path": "HDP/2.5/services/OCCI/package/scripts/alerts/alert_mapred_long_job.py",
+          "parameters" : [
+            {
+              "name" : "mr.exectime.warning.threshold",
+              "display_name" : "Execution Time",
+              "units" : "Second",
+              "value" : 3600,
+              "description" : "The execution time of finished MapReduce Job",
+              "type" : "NUMERIC",
+              "threshold" : "WARNING"
+            },
+            {
+              "name" : "mr.exectime.critical.threshold",
+              "display_name" : "Execution Time",
+              "units" : "Second",
+              "value" : 7200,
+              "description" : "The execution time of finished MapReduce Job",
+              "type" : "NUMERIC",
+              "threshold" : "CRITICAL"
+            }
+          ]
         }
       }
     ],
