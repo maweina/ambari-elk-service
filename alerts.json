@@ -1,5 +1,5 @@
 {
-  "ELK": {
+  "OCCI": {
     "KIBANA_SERVER": [
       {
         "name": "mapred_job",
@@ -11,6 +11,20 @@
         "source": {
           "type": "SCRIPT",
           "path": "HDP/2.5/services/OCCI/package/scripts/alerts/alert_mapred_long_job.py"
+        }
+      }
+    ],
+    "LOGSTASH_AGENT": [
+      {
+        "name": "logstash_process",
+        "label": "Logstash Agent status",
+        "description": "This alert indicates the status of the Logstash Agent process as determined by the monitor status script.",
+        "interval": 1,
+        "scope": "HOST",
+        "enabled": true,
+        "source": {
+          "type": "SCRIPT",
+          "path": "HDP/2.5/services/OCCI/package/scripts/alerts/logstash_agent_monitor.py"
         }
       }
     ]

@@ -17,8 +17,8 @@
         <component>
           <name>LOGSTASH_AGENT</name>
           <displayName>Logstash Agent</displayName>
-          <category>MASTER</category>
-          <cardinality>1+</cardinality>
+          <category>SLAVE</category>
+          <cardinality>ALL</cardinality>
           <versionAdvertised>true</versionAdvertised>
           <commandScript>
             <script>scripts/logstash_agent.py</script>
