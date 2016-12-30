@@ -6,8 +6,10 @@ RESULT_STATE_WARNING = 'WARNING'
 RESULT_STATE_CRITICAL = 'CRITICAL'
 
 # threshold
-THRESHOLD_CRITICAL = 100
-THRESHOLD_WARNING = 50
+MR_EXECTIME_WARNING_THRESHOLD_DEFAULT = 7200
+MR_EXECTIME_CRITICAL_THRESHOLD_DEFAULT = 3600
+MR_EXECTIME_WARNING_THRESHOLD_KEY = "mr.exectime.warning.threshold"
+MR_EXECTIME_CRITICAL_THRESHOLD_KEY = "mr.exectime.critical.threshold"
 
 # the interval to check the metric, default is 1 minute
 INTERVAL_PARAM_KEY = 'interval'
@@ -23,13 +25,18 @@ def execute(configurations={}, parameters={}, host_name=None):
     host_name (string): the name of this host where the alert is running
     """
 
-    url = 'http://localhost:9200/logstash-mapred/_search?'
+    url = 'http://localhost:9200/mylogstash-yarn-apps/_search?'
     interval = INTERVAL_PARAM_DEFAULT
     if INTERVAL_PARAM_KEY in parameters:
       interval = _coerce_to_integer(parameters[INTERVAL_PARAM_KEY])
-      
+    mr_exectime_threshold_warning = MR_EXECTIME_WARNING_THRESHOLD_DEFAULT
+    if MR_EXECTIME_WARNING_THRESHOLD_KEY in parameters:
+        mr_exectime_threshold_warning =_coerce_to_integer(parameters[MR_EXECTIME_WARNING_THRESHOLD_KEY])
+    mr_exectime_threshold_critical = MR_EXECTIME_CRITICAL_THRESHOLD_DEFAULT
+    if MR_EXECTIME_CRITICAL_THRESHOLD_KEY in parameters:
+        mr_exectime_threshold_critical =_coerce_to_integer(parameters[MR_EXECTIME_CRITICAL_THRESHOLD_KEY])
     # critical applications
-    payload = json.loads('{"fields" : ["appId"], "query" : {"bool":  {"must": [ {"and": [{"range" : {"executionTime":{"gte": %d}}}, {"range": {"@timestamp": {"gt" : "now-%dm"}}}]}]}}}'%(THRESHOLD_CRITICAL,interval))
+    payload = json.loads('{"fields" : ["appId"], "query" : {"bool":  {"must": [ {"and": [{"range" : {"elapsedTime":{"gte": %d}}}, {"range": {"finishedTime": {"gt" : "now-%dm"}}}]}]}}}'%(mr_exectime_threshold_critical,interval))
     headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
     r = requests.post(url, data=json.dumps(payload), headers=headers)
     output = r.json()
@@ -43,10 +50,10 @@ def execute(configurations={}, parameters={}, host_name=None):
                 err_apps.append(appId)
                 
     if len(err_apps) > 0:
-        msgs.append("The executionTime of applications '{0}' is greater than {1} seconds.".format(", ".join(err_apps), THRESHOLD_CRITICAL))
+        msgs.append("The execution time of MapReduce Job '{0}' is greater than {1} seconds.".format(", ".join(err_apps), mr_exectime_threshold_critical))
         
     # warning applications
-    payload = json.loads('{"fields" : ["appId"], "query" : {"bool":  {"must": [ {"and": [{"range" : {"executionTime":{"gte": %d, "lte": %d}}}, {"range": {"@timestamp": {"gt" : "now-%dm"}}}]}]}}}'%(THRESHOLD_WARNING, THRESHOLD_CRITICAL,interval))
+    payload = json.loads('{"fields" : ["appId"], "query" : {"bool":  {"must": [ {"and": [{"range" : {"elapsedTime":{"gte": %d, "lte": %d}}}, {"range": {"finishedTime": {"gt" : "now-%dm"}}}]}]}}}'%(mr_exectime_threshold_warning, mr_exectime_threshold_critical,interval))
     headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
     r = requests.post(url, data=json.dumps(payload), headers=headers)
     output = r.json() 
@@ -59,7 +66,7 @@ def execute(configurations={}, parameters={}, host_name=None):
                 warn_apps.append(appId)
 
     if len(warn_apps) > 0:
-        msgs.append("; The executionTime of applications '{0}' is greater than {1} and less than {2}seconds.".format(", ".join(warn_apps), THRESHOLD_WARNING, THRESHOLD_CRITICAL))
+        msgs.append("The execution time of MapReduce Job '{0}' is greater than {1} seconds and less than {2} seconds.".format(", ".join(warn_apps), mr_exectime_threshold_warning, mr_exectime_threshold_critical))
     
     # Determine the status based on errors.    
     if len(err_apps) == 0 and len(warn_apps) == 0:
