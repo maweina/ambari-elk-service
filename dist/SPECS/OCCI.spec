@@ -9,9 +9,10 @@ Group:          Applications/System
 License:        Copyright AsiaInfo, Inc. 2016
 Source0:        %{name}-%{version}.tar.gz
 BuildArch:      x86_64 
+Requires:       ambari-server = 2.4.0.1
 %define         userpath  /var/lib/ambari-server/resources/stacks/HDP/2.5/services
 Prefix:         %{userpath}
-%define         _topdir %(echo $PWD)/dist/
+%define         _topdir %(echo $PWD)/dist
 %description 
 OCCI service installation package.
 
