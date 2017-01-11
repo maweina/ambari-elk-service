@@ -100,10 +100,10 @@
     }
   },
   {
-    "_id": "log-hdfs-secondarynamenode",
+    "_id": "log-hdfs-journalnode",
     "_type": "search",
     "_source": {
-      "title": "log-hdfs-secondarynamenode",
+      "title": "log-hdfs-journalnode",
       "description": "",
       "hits": 0,
       "columns": [
@@ -117,7 +117,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.secondarynamenode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+        "searchSourceJSON": "{\"index\":\"logstash-hdfs-log\",\"query\":{\"query_string\":{\"query\":\"type: hdfs.journalnode\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
@@ -298,10 +298,10 @@
     }
   },
   {
-    "_id": "log-zk",
+    "_id": "log-zookeeperServer",
     "_type": "search",
     "_source": {
-      "title": "log-zk",
+      "title": "log-zookeeperServer",
       "description": "",
       "hits": 0,
       "columns": [
