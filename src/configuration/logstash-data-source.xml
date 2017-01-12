@@ -88,7 +88,7 @@ output {
 # pipeline of disk usage
 input {
   exec {
-    command => "su {{hdfs_user}} -c 'hdfs dfs -df' "
+    command => "su {{hdfs_user}} -c &apos;hdfs dfs -df&apos;"
     interval => 3600
     type => "disk"
   }
@@ -97,7 +97,7 @@ filter {
   if [type] == "disk" {
     grok {
       match => {
-        "message" => "(?<filesystem>hdfs.*)\s+%{NUMBER:total}\s+%{NUMBER:used}\s+%{NUMBER:avail}\s+(?<used_percent>.*)%\n"
+        "message" => "(?&lt;filesystem&gt;hdfs.*)\s+%{NUMBER:total}\s+%{NUMBER:used}\s+%{NUMBER:avail}\s+(?&lt;used_percent&gt;.*)%\n"
       }
     }
     if ("_grokparsefailure" in [tags]) { drop {} }
