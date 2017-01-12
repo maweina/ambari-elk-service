@@ -40,7 +40,7 @@
       "title": "log-hdfs",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-namenode\",\"panelIndex\":1,\"row\":1,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-datanode\",\"panelIndex\":2,\"row\":9,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-secondarynamenode\",\"panelIndex\":3,\"row\":5,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"}]",
+      "panelsJSON": "[{\"col\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-namenode\",\"panelIndex\":1,\"row\":1,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-datanode\",\"panelIndex\":2,\"row\":9,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"},{\"col\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"id\":\"log-hdfs-journalnode\",\"panelIndex\":3,\"row\":5,\"size_x\":12,\"size_y\":4,\"sort\":[\"_score\",\"desc\"],\"type\":\"search\"}]",
       "optionsJSON": "{\"darkTheme\":true}",
       "uiStateJSON": "{}",
       "version": 1,
@@ -68,13 +68,13 @@
     }
   },
   {
-    "_id": "log-zk",
+    "_id": "log-zookeeper",
     "_type": "dashboard",
     "_source": {
-      "title": "log-zk",
+      "title": "log-zookeeper",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"id\":\"log-zk\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":12,\"size_y\":6,\"col\":1,\"row\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
+      "panelsJSON": "[{\"id\":\"log-zookeeperServer\",\"type\":\"search\",\"panelIndex\":1,\"size_x\":12,\"size_y\":6,\"col\":1,\"row\":1,\"columns\":[\"loglevel\",\"host\",\"content\"],\"sort\":[\"_score\",\"desc\"]}]",
       "optionsJSON": "{\"darkTheme\":true}",
       "uiStateJSON": "{}",
       "version": 1,
@@ -106,7 +106,7 @@
     "_type": "visualization",
     "_source": {
       "title": "Disk Utilization",
-      "visState": "{\"title\":\"Disk Utilization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"h\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}},{\"id\":\"3\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"total\",\"customLabel\":\"Total in GB\"}},{\"id\":\"4\",\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"used\",\"customLabel\":\"Used in GB\"}}],\"listeners\":{}}",
+      "visState": "{\"title\":\"Disk Utilization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"h\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Time\"}},{\"id\":\"3\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"total\",\"customLabel\":\"Total in GB\"}},{\"id\":\"4\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"used\",\"customLabel\":\"Used in GB\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\"vis\":{\"colors\":{\"Used in GB\":\"#fdd017\",\"Total in GB\":\"#508642\"},\"legendOpen\":true},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
       "description": "",
       "version": 1,
