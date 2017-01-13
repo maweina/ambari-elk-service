@@ -28,4 +28,4 @@ curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/mylo
 
 # create and set default index
 curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/index-pattern/*logstash-* -d '{"title" : "*logstash-*",  "timeFieldName": "@timestamp"}'
-curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/config/4.5.4 -d '{"defaultIndex" : "*logstash-*"}'
+curl -XPUT http://localhost:{{elastic_port}}/{{kinana_index}}/config/4.5.4 -d '{"defaultIndex":"*logstash-*","timepicker:refreshIntervalDefaults":"{\"display\":\"1 minute\",\n\"pause\":false,\n\"value\":60000\n}"}'
