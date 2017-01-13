@@ -420,8 +420,8 @@ output {
 #pipeline of hbase phoenix server logs
 input {
   file {
-    path => "{{hbase_log_dir}}/*-phoenix-*.log"
-    sincedb_path => "{{logstash_sincedb_path}}/phoenix-*.log"
+    path => "{{hbase_log_dir}}/phoenix-*.log"
+    sincedb_path => "{{logstash_sincedb_path}}/hbase.phoenix-server.log"
     start_position => beginning
     type => "hbase.phoenix"
   }
