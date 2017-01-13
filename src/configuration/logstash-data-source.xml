@@ -37,7 +37,6 @@ input {
   file {
     path => "{{logstash_log_dir}}/yarn.apps"
     sincedb_path => "{{logstash_sincedb_path}}/yarn.apps"
-    start_position => beginning
     type => "yarn.apps"
   }
 }
@@ -89,7 +88,7 @@ output {
 # pipeline of disk usage
 input {
   exec {
-    command => "df --total -l -BG|grep total"
+    command => "su {{hdfs_user}} -c &apos;hdfs dfs -df&apos;"
     interval => 3600
     type => "disk"
   }
@@ -97,19 +96,25 @@ input {
 filter {
   if [type] == "disk" {
     grok {
-      match => {   
-        "message" => "total\s+%{NUMBER:total}G\s+%{NUMBER:used}G\s+%{NUMBER:avail}G"
+      match => {
+        "message" => "(?&lt;filesystem&gt;hdfs.*)\s+%{NUMBER:total}\s+%{NUMBER:used}\s+%{NUMBER:avail}\s+(?&lt;used_percent&gt;.*)%\n"
       }
     }
     if ("_grokparsefailure" in [tags]) { drop {} }
     mutate {
+      convert => ["filesystem", "string"]
       convert => ["total", "integer"]
       convert => ["used", "integer"]
       convert => ["avail", "integer"]
+      convert => ["used_percent", "integer"]
+    }
+    ruby {
+          code => "event['total'] = event['total']/1073741824.0
+          event['used'] = event['used']/1073741824.0
+          event['avail'] = event['avail']/1073741824.0"
     }
   }
 }
-
 output {
   if [type] == "disk" {
     elasticsearch {
