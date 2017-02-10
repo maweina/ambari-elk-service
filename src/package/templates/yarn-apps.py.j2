@@ -12,17 +12,17 @@ selfTimestamp = datetime.datetime.fromtimestamp(int(time.time())).isoformat()
 rm_hosts = {{rm_hosts}}
 
 def requests_rm_get(resourcepath):
-    result = []
+    r = []
     for rm_host in rm_hosts:
         try:
-            result = requests.get('http://' + rm_host + ':{{rm_port}}/ws/v1/' + resourcepath)
+            r = requests.get('http://' + rm_host + ':{{rm_port}}/ws/v1/' + resourcepath)
             break
-        except requests.exceptions.ConnectionError:
+        except:
             if rm_host != rm_hosts[-1]:
                 pass
             else:
                 raise
-    return result.json()
+    return r.json()
 def parse_queue(queueList, parent):
     global queueCapacity
     for queue in queueList:
