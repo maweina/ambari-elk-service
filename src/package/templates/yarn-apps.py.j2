@@ -9,7 +9,20 @@ memoryTotal = 0
 vcoreTotal = 0
 # this time is the records generation time in yarn.apps file
 selfTimestamp = datetime.datetime.fromtimestamp(int(time.time())).isoformat()
+rm_hosts = {{rm_hosts}}
 
+def requests_rm_get(resourcepath):
+    r = []
+    for rm_host in rm_hosts:
+        try:
+            r = requests.get('http://' + rm_host + ':{{rm_port}}/ws/v1/' + resourcepath)
+            break
+        except:
+            if rm_host != rm_hosts[-1]:
+                pass
+            else:
+                raise
+    return r.json()
 def parse_queue(queueList, parent):
     global queueCapacity
     for queue in queueList:
@@ -27,9 +40,8 @@ def parse_queue(queueList, parent):
             queueCapacity[path]['vcoreFree'] = vcore
             queueCapacity[path]['memoryFree'] = memory
             
-def yarn_scheduler():    
-    r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/scheduler')
-    output = r.json()
+def yarn_scheduler():
+    output = requests_rm_get('cluster/scheduler')
     rootQueue = output['scheduler']['schedulerInfo']['queueName']
     if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
         queues = output['scheduler']['schedulerInfo']['queues']['queue']
@@ -37,15 +49,13 @@ def yarn_scheduler():
         
 def yarn_metics():
     global memoryTotal
-    global vcoreTotal 
-    r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/metrics')
-    output = r.json()
+    global vcoreTotal
+    output = requests_rm_get('cluster/metrics')
     memoryTotal = int(output['clusterMetrics']['totalMB'])
     vcoreTotal = int(output['clusterMetrics']['totalVirtualCores'])
       
 def yarn_apps():
-    r = requests.get('http://{{rm_host}}:{{rm_port}}/ws/v1/cluster/apps')
-    output = r.json()
+    output = requests_rm_get('cluster/apps')
     apps = output['apps']
     vcoreUsed = 0
     memoryUsed = 0
