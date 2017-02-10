@@ -10,6 +10,19 @@ vcoreTotal = 0
 # this time is the records generation time in yarn.apps file
 selfTimestamp = datetime.datetime.fromtimestamp(int(time.time())).isoformat()
 rm_hosts = {{rm_hosts}}
+
+def requests_rm_get(resourcepath):
+    result = []
+    for rm_host in rm_hosts:
+        try:
+            result = requests.get('http://' + rm_host + ':{{rm_port}}/ws/v1/' + resourcepath)
+            break
+        except requests.exceptions.ConnectionError:
+            if rm_host != rm_hosts[-1]:
+                pass
+            else:
+                raise
+    return result.json()
 def parse_queue(queueList, parent):
     global queueCapacity
     for queue in queueList:
@@ -28,14 +41,7 @@ def parse_queue(queueList, parent):
             queueCapacity[path]['memoryFree'] = memory
             
 def yarn_scheduler():
-    r = []
-    for rm_host in rm_hosts:
-        try:
-            r = requests.get('http://' + rm_host + ':{{rm_port}}/ws/v1/cluster/scheduler')
-            break
-        except requests.exceptions.ConnectionError:
-            pass
-    output = r.json()
+    output = requests_rm_get('cluster/scheduler')
     rootQueue = output['scheduler']['schedulerInfo']['queueName']
     if 'queues' in output['scheduler']['schedulerInfo'] and 'queue' in output['scheduler']['schedulerInfo']['queues']:
         queues = output['scheduler']['schedulerInfo']['queues']['queue']
@@ -43,27 +49,13 @@ def yarn_scheduler():
         
 def yarn_metics():
     global memoryTotal
-    global vcoreTotal 
-    r = []
-    for rm_host in rm_hosts:
-        try:
-            r = requests.get('http://' + rm_host + ':{{rm_port}}/ws/v1/cluster/metrics')
-            break
-        except requests.exceptions.ConnectionError:
-            pass
-    output = r.json()
+    global vcoreTotal
+    output = requests_rm_get('cluster/metrics')
     memoryTotal = int(output['clusterMetrics']['totalMB'])
     vcoreTotal = int(output['clusterMetrics']['totalVirtualCores'])
       
 def yarn_apps():
-    r = []
-    for rm_host in rm_hosts:
-        try:
-            r = requests.get('http://' + rm_host + ':{{rm_port}}/ws/v1/cluster/apps')
-            break
-        except requests.exceptions.ConnectionError:
-            pass
-    output = r.json()
+    output = requests_rm_get('cluster/apps')
     apps = output['apps']
     vcoreUsed = 0
     memoryUsed = 0
