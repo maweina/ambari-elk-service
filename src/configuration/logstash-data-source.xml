@@ -167,7 +167,7 @@ input {
 }
 
 filter {
-  if [type] == "hdfs.namenode" or [type] == "hdfs.secondarynamenode" or [type] == "hdfs.journalnode" or if [type] == "hdfs.datanode"{
+  if [type] == "hdfs.namenode" or [type] == "hdfs.secondarynamenode" or [type] == "hdfs.journalnode" or [type] == "hdfs.datanode"{
     grok {
       match => {   
         "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
@@ -176,11 +176,16 @@ filter {
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
+    mutate {
+      split => ["timestamp", " "]
+      join => ["timestamp", "T"]
+      replace => ["timestamp","%{timestamp}+08:00"]
+    }
   }
 }
 
 output {
-  if [type] == "hdfs.namenode" or [type] == "hdfs.secondarynamenode" or [type] == "hdfs.journalnode" or if [type] == "hdfs.datanode"{
+  if [type] == "hdfs.namenode" or [type] == "hdfs.secondarynamenode" or [type] == "hdfs.journalnode" or [type] == "hdfs.datanode"{
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
       index => "logstash-hdfs-log"
@@ -230,6 +235,11 @@ filter {
     }
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
+    }
+    mutate {
+      split => ["timestamp", " "]
+      join => ["timestamp", "T"]
+      replace => ["timestamp","%{timestamp}+08:00"]
     }
   }
 }
@@ -283,6 +293,11 @@ filter {
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
+    mutate {
+      split => ["timestamp", " "]
+      join => ["timestamp", "T"]
+      replace => ["timestamp","%{timestamp}+08:00"]
+    }
   }
 }
 
@@ -314,6 +329,11 @@ filter {
     }
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
+    }
+    mutate {
+      split => ["timestamp", " "]
+      join => ["timestamp", "T"]
+      replace => ["timestamp","%{timestamp}+08:00"]
     }
   }
 }
@@ -367,6 +387,11 @@ filter {
     }
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
+    }
+    mutate {
+      split => ["timestamp", " "]
+      join => ["timestamp", "T"]
+      replace => ["timestamp","%{timestamp}+08:00"]
     }
   }
 }
