@@ -136,31 +136,6 @@ input {
   }
 }
 
-filter {
-  if [type] == "hdfs.namenode" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "hdfs.namenode" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hdfs-log"
-      template => "{{logstash_log_dir}}/template-service-log.json"
-      template_name => "logstash-service-log"
-      template_overwrite => true
-    }
-  }
-}
-
 #pipeline of hdfs secondarynamenode logs
 input {
   file {
@@ -171,28 +146,6 @@ input {
   }
 }
 
-filter {
-  if [type] == "hdfs.secondarynamenode" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "hdfs.secondarynamenode" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hdfs-log"
-    }
-  }
-}
-
 #pipeline of hdfs journalnode logs
 input {
   file {
@@ -200,28 +153,6 @@ input {
     sincedb_path => "{{logstash_sincedb_path}}/hdfs.journalnode.log"
     start_position => beginning
     type => "hdfs.journalnode"
-  }
-}
-
-filter {
-  if [type] == "hdfs.journalnode" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "hdfs.journalnode" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hdfs-log"
-    }
   }
 }
 
@@ -236,7 +167,7 @@ input {
 }
 
 filter {
-  if [type] == "hdfs.datanode" {
+  if [type] == "hdfs.namenode" or [type] == "hdfs.secondarynamenode" or [type] == "hdfs.journalnode" or [type] == "hdfs.datanode"{
     grok {
       match => {   
         "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
@@ -245,14 +176,20 @@ filter {
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
+    mutate {
+      replace => ["timestamp","%{timestamp}+08:00"]
+    }
   }
 }
 
 output {
-  if [type] == "hdfs.datanode" {
+  if [type] == "hdfs.namenode" or [type] == "hdfs.secondarynamenode" or [type] == "hdfs.journalnode" or [type] == "hdfs.datanode"{
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
       index => "logstash-hdfs-log"
+      template => "{{logstash_log_dir}}/template-service-log.json"
+      template_name => "logstash-service-log"
+      template_overwrite => true
     }
   }
 }
@@ -267,28 +204,6 @@ input {
   }
 }
 
-filter {
-  if [type] == "yarn.nodemanager" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "yarn.nodemanager" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-yarn-log"
-    }
-  }
-}
-
 #pipeline of yarn resourcemanager logs
 input {
   file {
@@ -296,28 +211,6 @@ input {
     sincedb_path => "{{logstash_sincedb_path}}/yarn.resourcemanager.log"
     start_position => beginning
     type => "yarn.resourcemanager"
-  }
-}
-
-filter {
-  if [type] == "yarn.resourcemanager" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "yarn.resourcemanager" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-yarn-log"
-    }
   }
 }
 
@@ -332,23 +225,29 @@ input {
 }
 
 filter {
-  if [type] == "yarn.timelineserver" {
+  if [type] == "yarn.nodemanager" or [type] == "yarn.resourcemanager" or [type] == "yarn.timelineserver"{
     grok {
-      match => {   
+      match => {
         "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
       }
     }
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
+    mutate {
+      replace => ["timestamp","%{timestamp}+08:00"]
+    }
   }
 }
 
 output {
-  if [type] == "yarn.timelineserver" {
+  if [type] == "yarn.nodemanager" or [type] == "yarn.resourcemanager" or [type] == "yarn.timelineserver"{
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
       index => "logstash-yarn-log"
+      template => "{{logstash_log_dir}}/template-service-log.json"
+      template_name => "logstash-service-log"
+      template_overwrite => true
     }
   }
 }
@@ -363,28 +262,6 @@ input {
   }
 }
 
-filter {
-  if [type] == "hbase.master" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "hbase.master" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hbase-log"
-    }
-  }
-}
-
 #pipeline of hbase regionserver logs
 input {
   file {
@@ -392,28 +269,6 @@ input {
     sincedb_path => "{{logstash_sincedb_path}}/hbase.regionserver.log"
     start_position => beginning
     type => "hbase.regionserver"
-  }
-}
-
-filter {
-  if [type] == "hbase.regionserver" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "hbase.regionserver" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hbase-log"
-    }
   }
 }
 
@@ -428,23 +283,29 @@ input {
 }
 
 filter {
-  if [type] == "hbase.phoenix" {
+  if [type] == "hbase.master" or [type] == "hbase.regionserver" or [type] == "hbase.phoenix"{
     grok {
-      match => {   
+      match => {
         "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
       }
     }
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
+    mutate {
+      replace => ["timestamp","%{timestamp}+08:00"]
+    }
   }
 }
 
 output {
-  if [type] == "hbase.phoenix" {
+  if [type] == "hbase.master" or [type] == "hbase.regionserver" or [type] == "hbase.phoenix"{
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
       index => "logstash-hbase-log"
+      template => "{{logstash_log_dir}}/template-service-log.json"
+      template_name => "logstash-service-log"
+      template_overwrite => true
     }
   }
 }
@@ -469,6 +330,9 @@ filter {
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
+    mutate {
+      replace => ["timestamp","%{timestamp}+08:00"]
+    }
   }
 }
 
@@ -477,6 +341,9 @@ output {
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
       index => "logstash-zookeeper-log"
+      template => "{{logstash_log_dir}}/template-service-log.json"
+      template_name => "logstash-service-log"
+      template_overwrite => true
     }
   }
 }
@@ -491,27 +358,6 @@ input {
   }
 }
 
-filter {
-  if [type] == "hive.metastore" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "hive.metastore" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hive-log"
-    }
-  }
-}
 
 #pipeline of hive server2 logs
 input {
@@ -520,28 +366,6 @@ input {
     sincedb_path => "{{logstash_sincedb_path}}/hive.server2.log"
     start_position => beginning
     type => "hive.server2"
-  }
-}
-
-filter {
-  if [type] == "hive.server2" {
-    grok {
-      match => {   
-        "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
-      }
-    }
-    if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
-      drop {}
-    }
-  }
-}
-
-output {
-  if [type] == "hive.server2" {
-    elasticsearch {
-      hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
-      index => "logstash-hive-log"
-    }
   }
 }
 
@@ -556,23 +380,29 @@ input {
 }
 
 filter {
-  if [type] == "hive.webhcat" {
+  if [type] == "hive.metastore" or [type] == "hive.server2" or [type] == "hive.webhcat"{
     grok {
-      match => {   
+      match => {
         "message" => "%{TIMESTAMP_ISO8601:timestamp}\s+%{LOGLEVEL:loglevel}\s+%{GREEDYDATA:content}"
       }
     }
     if [loglevel] != "ERROR" and [loglevel] != "WARN" and [loglevel] != "FATAL" {
       drop {}
     }
+    mutate {
+      replace => ["timestamp","%{timestamp}+08:00"]
+    }
   }
 }
 
 output {
-  if [type] == "hive.webhcat" {
+  if [type] == "hive.metastore" or [type] == "hive.server2" or [type] == "hive.webhcat"{
     elasticsearch {
       hosts => [{% for node in elastic_data_hosts %}"{{node}}:{{elastic_port}}"{% if not loop.last %},{% endif %}{% endfor %}]
       index => "logstash-hive-log"
+      template => "{{logstash_log_dir}}/template-service-log.json"
+      template_name => "logstash-service-log"
+      template_overwrite => true
     }
   }
 }
