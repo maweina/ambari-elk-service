@@ -16,12 +16,15 @@ MR_EXECTIME_CRITICAL_THRESHOLD_KEY = "mr.exectime.critical.threshold"
 INTERVAL_PARAM_KEY = 'interval'
 INTERVAL_PARAM_DEFAULT = 1
 ES_PORT = '{{elasticsearch-site/http.port}}'
+
 def get_tokens():
     """
     Returns a tuple of tokens in the format {{site/property}} that will be used
     to build the dictionary passed into execute
     """
     return (ES_PORT,)
+
+
 def execute(configurations={}, parameters={}, host_name=None):
     """
     Returns a tuple containing the result code and a pre-formatted result label
@@ -37,6 +40,7 @@ def execute(configurations={}, parameters={}, host_name=None):
         url = 'http://localhost:' + configurations[ES_PORT] + '/mylogstash-yarn-apps/_search?'
     else:
         return (RESULT_CODE_UNKNOWN, ['The es_port is a required parameter.'])
+
     interval = INTERVAL_PARAM_DEFAULT
     if INTERVAL_PARAM_KEY in parameters:
       interval = _coerce_to_integer(parameters[INTERVAL_PARAM_KEY])
@@ -91,7 +95,8 @@ def execute(configurations={}, parameters={}, host_name=None):
     else:
         # Report warnings
         return (RESULT_STATE_WARNING, ["\n".join(msgs)])
-        
+
+
 def _coerce_to_integer(value):
   """
   Attempts to correctly coerce a value to an integer. For the case of an integer or a float,
@@ -104,7 +109,8 @@ def _coerce_to_integer(value):
     return int(value)
   except ValueError:
     return int(float(value))
-        
+
+
 if __name__ == "__main__":
     result = execute()
     print result
